@@ -127,21 +127,13 @@ dialog::backdrop{background:rgba(0,0,0,.65)}
 dialog p{color:var(--mut)}
 dialog a{color:var(--btnh)}
 
-/* ===== Carrusel de ejemplos ===== */
-.cz{--ar:7/6;position:relative;width:min(86%,340px);margin:20px auto 8px;outline:0}
-@media(min-width:700px){.cz{width:clamp(300px,36%,420px)}}
-.cz-v{position:relative;aspect-ratio:var(--ar);border-radius:22px;overflow:hidden;background:#0a0e27;border:1px solid var(--bd);box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 0 1px rgba(220,197,143,.12);touch-action:pan-y;user-select:none;-webkit-user-select:none}
-.cz-v img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .8s ease;pointer-events:none;-webkit-user-drag:none}
-.cz-v img.on{opacity:1}
-.cz-a{position:absolute;top:50%;width:36px;height:36px;margin-top:-18px;border-radius:50%;border:1px solid var(--bd);background:rgba(6,8,20,.55);color:#fff;font-size:20px;line-height:1;cursor:pointer;opacity:0;transition:opacity .25s,background .2s;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:2}
-.cz-a:hover{background:var(--btn)}
-.cz-p{left:8px}.cz-n{right:8px}
-.cz:hover .cz-a,.cz:focus-within .cz-a{opacity:1}
-@media(hover:none){.cz-a{display:none}}
-.cz-d{display:flex;justify-content:center;gap:7px;margin-top:12px}
-.cz-d button{width:7px;height:7px;padding:0;border:0;border-radius:99px;background:var(--bd);cursor:pointer;transition:width .3s,background .3s}
-.cz-d button[aria-current=true]{width:22px;background:var(--gold)}
-@media(prefers-reduced-motion:reduce){.cz-v img{transition:none}}
+/* ===== Fotos de ejemplo: 2 fotos, intercambio cada 4 s ===== */
+.cz{width:min(100%,780px);margin:22px auto 8px;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:center}
+.cz-i{margin:0;will-change:transform}
+.cz-i img{display:block;width:100%;height:auto;filter:drop-shadow(0 16px 30px rgba(0,0,0,.4)) drop-shadow(0 0 1px rgba(220,197,143,.55));animation:czf 6s ease-in-out infinite;-webkit-user-drag:none;user-select:none}
+.cz-i:last-child img{animation-delay:-3s}
+@keyframes czf{50%{transform:translateY(-6px)}}
+@media(prefers-reduced-motion:reduce){.cz-i img{animation:none}}
 </style>
 </head>
 <body>
@@ -150,11 +142,9 @@ dialog a{color:var(--btnh)}
 <h1>Generador de Facturas, Cuentas de Cobro y Recibos en PDF</h1>
 <p class="sub">Crea facturas de venta, cuentas de cobro para freelancers y recibos de caja gratis, con 3 plantillas profesionales y código QR. Sin registro: tus datos nunca salen de tu dispositivo.</p>
 
-<section class="cz" id="cz" aria-roledescription="carrusel" aria-label="Ejemplos de documentos creados con la herramienta" tabindex="0">
-<div class="cz-v" id="czv"></div>
-<button type="button" class="cz-a cz-p" id="czp" aria-label="Imagen anterior">&#8249;</button>
-<button type="button" class="cz-a cz-n" id="czn" aria-label="Imagen siguiente">&#8250;</button>
-<div class="cz-d" id="czd"></div>
+<section class="cz" id="cz" aria-label="Ejemplos de documentos creados con la herramienta">
+<figure class="cz-i"><img src="img/factura-1.webp" width="1098" height="1228" alt="Ejemplo de factura profesional 1" decoding="async"></figure>
+<figure class="cz-i"><img src="img/factura-2.webp" width="1098" height="1144" alt="Ejemplo de factura profesional 2" decoding="async"></figure>
 </section>
 </header>
 <main>
@@ -284,25 +274,21 @@ render();
 </script>
 <script>
 (()=>{
-/* ===== EDITA AQUÍ: las 7 imágenes y el tiempo (ms) ===== */
-const IMGS=['img/factura-1.jpg','img/factura-2.jpg','img/factura-3.jpg','img/factura-4.jpg','img/factura-5.jpg','img/factura-6.jpg','img/factura-7.jpg'];
-const TIEMPO=5000;
-const v=document.getElementById('czv'),d=document.getElementById('czd'),box=document.getElementById('cz');
-let i=0,t=null,hover=false;
-const ims=IMGS.map((s,k)=>{const m=new Image();m.src=s;m.alt='Ejemplo de factura profesional '+(k+1)+' de '+IMGS.length;m.decoding='async';if(k>0)m.loading='lazy';v.appendChild(m);return m});
-const dots=IMGS.map((_,k)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Ver imagen '+(k+1));b.onclick=()=>{go(k);play()};d.appendChild(b);return b});
-function go(n){i=(n+IMGS.length)%IMGS.length;ims.forEach((m,k)=>m.classList.toggle('on',k===i));dots.forEach((b,k)=>b.setAttribute('aria-current',k===i))}
-function play(){clearInterval(t);t=setInterval(()=>{if(!hover&&!document.hidden)go(i+1)},TIEMPO)}
-document.getElementById('czp').onclick=()=>{go(i-1);play()};
-document.getElementById('czn').onclick=()=>{go(i+1);play()};
-box.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')hover=true});
-box.addEventListener('pointerleave',()=>hover=false);
-box.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){go(i-1);play()}if(e.key==='ArrowRight'){go(i+1);play()}});
-let x0=null;
-v.addEventListener('pointerdown',e=>{x0=e.clientX});
-v.addEventListener('pointerup',e=>{if(x0===null)return;const dx=e.clientX-x0;x0=null;if(Math.abs(dx)>40){go(dx<0?i+1:i-1);play()}});
-v.addEventListener('pointercancel',()=>x0=null);
-go(0);play();
+/* ===== EDITA AQUÍ: tiempo entre intercambios (ms) y duración del movimiento ===== */
+const TIEMPO=4000,DUR=1000;
+const box=document.getElementById('cz'),reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+let busy=false;
+function swap(){
+if(busy||document.hidden)return;
+const[a,b]=box.children,ra=a.getBoundingClientRect(),rb=b.getBoundingClientRect();
+if(reduce){box.insertBefore(b,a);return}
+const dx=rb.left-ra.left,dy=rb.top-ra.top,o={duration:DUR,easing:'cubic-bezier(.65,0,.35,1)',fill:'forwards'};
+busy=true;a.style.zIndex=2;
+const A=a.animate([{transform:'translate3d(0,0,0) scale(1)'},{transform:`translate3d(${dx/2}px,${dy/2-10}px,0) scale(1.07)`},{transform:`translate3d(${dx}px,${dy}px,0) scale(1)`}],o);
+const B=b.animate([{transform:'translate3d(0,0,0) scale(1)'},{transform:`translate3d(${-dx/2}px,${-dy/2+6}px,0) scale(.93)`},{transform:`translate3d(${-dx}px,${-dy}px,0) scale(1)`}],o);
+Promise.all([A.finished,B.finished]).then(()=>{box.insertBefore(b,a);A.cancel();B.cancel();a.style.zIndex='';busy=false});
+}
+setInterval(swap,TIEMPO);
 })();
 </script>
 </body>
