@@ -30,6 +30,8 @@ nav button[aria-selected=true]{background:var(--btn);color:#fff}
 @media(min-width:980px){.grid{grid-template-columns:minmax(0,440px) minmax(0,1fr);align-items:start}#pv{position:sticky;top:12px}}
 .card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;box-shadow:0 12px 32px rgba(0,0,0,.22)}
 fieldset{border:0;padding:0;margin:0 0 10px}
+fieldset+fieldset,.sep,.sep+fieldset{border-top:1px solid var(--bd);padding-top:14px;margin-top:14px}
+.sep{margin-bottom:10px}
 legend{font-weight:700;margin-bottom:6px;padding:0}
 label{display:block;margin-bottom:8px;font-size:12.5px;color:var(--mut)}
 input,select,textarea{width:100%;margin-top:3px;padding:9px 10px;background:var(--in);color:var(--tx);border:1px solid var(--bd);border-radius:10px;font-size:16px}
@@ -91,9 +93,9 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--btn);border-colo
 .ih span{font-size:11px;color:var(--mut)}
 .hint{margin:0 0 6px;font-size:12px;color:var(--mut)}
 .opt{margin-top:2px;padding-top:10px;border-top:1px solid var(--bd)}
-.opt summary{cursor:pointer;font-weight:700;padding:12px 14px;margin-bottom:8px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--card);border:2px solid var(--btn);border-radius:12px;color:var(--btn)}
+.opt summary{cursor:pointer;font-weight:600;font-size:14px;padding:11px 12px;margin-bottom:8px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--in);border:1px solid var(--bd);border-radius:10px;color:var(--tx);box-shadow:0 4px 14px rgba(0,0,0,.12)}
 .opt summary::-webkit-details-marker{display:none}
-.opt summary::after{content:"Toca para abrir";font-size:12px;font-weight:600;white-space:nowrap}
+.opt summary::after{content:"Toca para abrir";font-size:12px;font-weight:600;white-space:nowrap;color:var(--gold)}
 .opt[open] summary::after{content:"Cerrar"}
 #pw{position:absolute;left:-9999px;top:0;width:794px}
 .doc.mini{width:100%;max-width:560px;min-height:0;margin:0 auto;padding:16px;font-size:12px;border-radius:10px;box-shadow:0 10px 28px rgba(0,0,0,.3)}
@@ -196,9 +198,9 @@ const fld=(l,k,t='text',p='')=>`<label>${l}<input data-k="${k}" type="${t}" plac
 const ta=(l,k,h,p='')=>`<label>${l}<textarea data-k="${k}" style="min-height:${h}px" placeholder="${p}"></textarea></label>`;
 const EM=`<fieldset><legend>Datos del emisor</legend>${fld('Nombre o empresa','em','text','Mi Negocio S.A.S.')}<div class="r">${fld('NIT / RUT','nit')}${fld('Teléfono','tel','tel')}</div><div class="r">${fld('Correo','mail','email')}${fld('Dirección','dir')}</div></fieldset>`;
 const CL=`<fieldset><legend>Datos del cliente</legend>${fld('Nombre del cliente','cl')}<div class="r">${fld('NIT / CC','clnit')}${fld('Teléfono o dirección','cldir')}</div></fieldset>`;
-const MT=`<div class="r">${fld('N.º de documento','num')}${fld('Fecha','date','date')}</div><label>Moneda<select data-k="cur">${CU.map(c=>`<option value="${c[0]}">${c[1]}</option>`).join('')}<option value="otra">Otra (escribir manualmente)</option></select></label><label data-cx hidden>Escribe tu moneda<input data-k="curx" placeholder="Ej: S/, Bs, CAD"></label>`;
+const MT=`<div class="sep"><div class="r">${fld('N.º de documento','num')}${fld('Fecha','date','date')}</div><label>Moneda<select data-k="cur">${CU.map(c=>`<option value="${c[0]}">${c[1]}</option>`).join('')}<option value="otra">Otra (escribir manualmente)</option></select></label><label data-cx hidden>Escribe tu moneda<input data-k="curx" placeholder="Ej: S/, Bs, CAD"></label></div>`;
 const PN=[
-EM+CL+MT+`<fieldset><legend>Artículos</legend><p class="hint">Unid. = unidades: cuántas piezas o productos vendes de cada artículo.</p><div class="it ih"><span>Descripción</span><span>Unid.</span><span>Precio</span><span></span></div><div id="rows"></div><button type="button" class="b g" id="ar">+ Añadir fila</button></fieldset>`+fld('Impuesto / IVA % (opcional)','tax','number','19')+ta('Notas (opcional)','nt',56),
+EM+CL+MT+`<fieldset><legend>Artículos</legend><div class="it ih"><span>Descripción</span><span>Unid.</span><span>Precio</span><span></span></div><div id="rows"></div><button type="button" class="b g" id="ar">+ Añadir fila</button></fieldset>`+fld('Impuesto / IVA % (opcional)','tax','number','19')+ta('Notas (opcional)','nt',56),
 EM+CL+MT+ta('Servicios prestados','sv',90,'Describe el trabajo realizado...')+fld('Valor del trabajo','val','number')+`<fieldset><legend>Datos de transferencia bancaria</legend><div class="r">${fld('Banco','bk')}${fld('Tipo de cuenta','bt','text','Ahorros / Corriente')}</div>${fld('Número de cuenta','bn')}</fieldset>`,
 EM+MT+`<fieldset><legend>Recibo de caja</legend>${fld('Recibí de','cl','text','Nombre del cliente')}${fld('La suma de','amt','number')}${ta('Por concepto de','con',64,'Abono, anticipo, arriendo...')}</fieldset>`
 ];
