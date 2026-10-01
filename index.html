@@ -143,7 +143,7 @@ dialog a{color:var(--btnh)}
 <p class="sub">Crea facturas de venta, cuentas de cobro y recibos de caja para tiendas y freelancers. Agrega el logo de tu negocio con solo una foto, con código QR. Gratis, sin registro: tus datos nunca salen de tu dispositivo.</p>
 
 <section class="cz" id="cz" aria-label="Ejemplos de documentos creados con la herramienta">
-<figure class="cz-i"><img src="img/factura-1.webp?v=2" width="1000" height="1117" alt="Ejemplo de factura profesional 1" decoding="async"></figure>
+<figure class="cz-i"><img src="img/factura-1.webp?v=3" width="1000" height="1117" alt="Ejemplo de factura profesional 1" decoding="async"></figure>
 <figure class="cz-i"><img src="img/factura-2.webp?v=2" width="1000" height="1117" alt="Ejemplo de factura profesional 2" decoding="async"></figure>
 </section>
 </header>
@@ -236,7 +236,7 @@ if(tab<2&&c)h+=`<div class="bx"><small class="mt">${tab?'COBRAR A':'FACTURADO A'
 if(tab==0){
 const rs=$$('#rows .it').map(r=>{const[a,q,p]=[...r.querySelectorAll('input')].map(i=>i.value.trim());return{d:a,q:+q||0,p:+p||0}}).filter(r=>r.d||r.p);
 const sub=rs.reduce((a,r)=>a+r.q*r.p,0),tx=+g('tax')||0,iva=sub*tx/100;tot=sub+iva;
-h+=`<div class="tw"><table><thead><tr><th>Descripción</th><th class="n">Unid.</th><th class="n">Precio</th><th class="n">Importe</th></tr></thead><tbody>${rs.map(r=>`<tr><td>${esc(r.d)}</td><td class="n">${r.q}</td><td class="n">${m(r.p)}</td><td class="n">${m(r.q*r.p)}</td></tr>`).join('')}</tbody></table></div><div class="tt"><div class="ln"><span>Subtotal</span><span>${m(sub)}</span></div>${tx?`<div class="ln"><span>IVA (${tx}%)</span><span>${m(iva)}</span></div>`:''}<div class="ln tot"><span>Total a pagar</span><span>${m(tot)}</span></div></div>${g('nt')?`<p class="bx mt">${esc(g('nt'))}</p>`:''}`;
+h+=`<div class="tw"><table><thead><tr><th>Descripción</th><th class="n">Unid.</th><th class="n">Precio</th><th class="n">Importe</th></tr></thead><tbody>${rs.map(r=>`<tr><td>${esc(r.d)}</td><td class="n">${r.q}</td><td class="n">${m(r.p)}</td><td class="n">${m(r.q*r.p)}</td></tr>`).join('')}</tbody></table></div><div class="tt"><div class="ln"><span>Subtotal</span><span>${m(sub)}</span></div>${tx?`<div class="ln"><span>IVA (${tx}%)</span><span>${m(iva)}</span></div>`:''}<div class="ln tot"><span>Total</span><span>${m(tot)}</span></div></div>${g('nt')?`<p class="bx mt">${esc(g('nt'))}</p>`:''}`;
 }else if(tab==1){
 tot=+g('val')||0;
 const bk=ln('Banco',g('bk'))+ln('Tipo de cuenta',g('bt'))+ln('Número',g('bn'));
