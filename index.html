@@ -91,7 +91,10 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--btn);border-colo
 .ih span{font-size:11px;color:var(--mut)}
 .hint{margin:0 0 6px;font-size:12px;color:var(--mut)}
 .opt{margin-top:2px;padding-top:10px;border-top:1px solid var(--bd)}
-.opt summary{cursor:pointer;font-weight:600;padding-bottom:8px}
+.opt summary{cursor:pointer;font-weight:700;padding:12px 14px;margin-bottom:8px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--card);border:2px solid var(--btn);border-radius:12px;color:var(--btn)}
+.opt summary::-webkit-details-marker{display:none}
+.opt summary::after{content:"Toca para abrir";font-size:12px;font-weight:600;white-space:nowrap}
+.opt[open] summary::after{content:"Cerrar"}
 #pw{position:absolute;left:-9999px;top:0;width:794px}
 .doc.mini{width:100%;max-width:560px;min-height:0;margin:0 auto;padding:16px;font-size:12px;border-radius:10px;box-shadow:0 10px 28px rgba(0,0,0,.3)}
 .mini h3{font-size:14px}
@@ -140,14 +143,14 @@ dialog a{color:var(--btnh)}
 <section class="card">
 <h2 class="st" id="ct">Crea tu recibo de venta</h2>
 <div id="pn"></div>
-<details class="opt"><summary>Logo y código QR (opcional)</summary>
+<details class="opt"><summary>TU LOGO/ CÓDIGO QR (opcional)</summary>
 <label>Logo de tu negocio<input id="lg" type="file" accept="image/*"></label>
 <label>Enlace para el QR (WhatsApp, Instagram o link de pago)<input id="qu" placeholder="https://..."></label>
 <label>Propósito del QR<select id="qp"><option value="pay">Recibir Pago</option><option value="wa">Contactar por WhatsApp</option><option value="ig">Seguir en Instagram</option></select></label>
 </details>
 </section>
 <aside class="card" id="pv" aria-label="Vista previa del documento">
-<div class="ph"><h2 class="st">Vista previa en vivo</h2><label class="ps">Plantilla<select id="sty"><option value="1">Minimalista</option><option value="2">Ejecutiva</option><option value="3">Moderna</option></select></label></div>
+<div class="ph"><h2 class="st">Vista previa en vivo</h2><label class="ps">Plantilla<select id="sty"><option value="1">Minimalista</option><option value="2">Ejecutiva</option><option value="3" selected>Moderna</option></select></label></div>
 <div class="doc mini t1" id="mini"></div>
 <output class="num" id="lt"></output>
 <button type="button" class="b big" id="dl">Descargar Factura en PDF</button>
@@ -185,7 +188,7 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const TT=['Recibo de Venta','Cuenta de Cobro','Recibo de Caja'];
 const QL={pay:'扫描 Scan para pagar',wa:'扫描 Scan para escribir por WhatsApp',ig:'扫描 Scan para seguir en Instagram'};
-let tab=0,sty=1,logo='';
+let tab=0,sty=3,logo='';
 const CT=['Crea tu recibo de venta','Crea tu cuenta de cobro','Crea tu recibo de caja'];
 const CU=[['USD','Dólar (USD)'],['COP','Peso colombiano (COP)'],['EUR','Euro (EUR)'],['MXN','Peso mexicano (MXN)'],['ARS','Peso argentino (ARS)'],['PEN','Sol peruano (PEN)'],['CLP','Peso chileno (CLP)'],['BRL','Real brasileño (BRL)'],['GBP','Libra esterlina (GBP)']];
 const fm=(n,c,x)=>{n=+n||0;if(c=='otra')return(x||'$')+' '+n.toLocaleString('es-CO',{maximumFractionDigits:2});const d=/COP|CLP/.test(c)?0:2;try{return n.toLocaleString('es-CO',{style:'currency',currency:c,minimumFractionDigits:d,maximumFractionDigits:d})}catch(e){return c+' '+n.toFixed(2)}};
