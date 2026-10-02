@@ -139,6 +139,10 @@ dialog a{color:var(--btnh)}
 .cz-i.b .cz-f{animation-delay:-3s}
 @keyframes czf{50%{transform:translateY(-6px)}}
 .cz-i img{display:block;width:100%;height:auto;filter:drop-shadow(0 18px 28px rgba(0,0,0,.38)) drop-shadow(0 0 1px rgba(220,197,143,.6));-webkit-user-drag:none;user-select:none}
+.cz-i{touch-action:pan-y}
+.cz-t{position:relative;transition:transform .35s ease;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+.cz-g{position:absolute;inset:0;border-radius:5.5%/4.92%;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,236,190,.32),transparent 55%)}
+.cz-i.on .cz-g{opacity:1}
 .cz-s{position:absolute;inset:0;border-radius:5.5%/4.92%;pointer-events:none;opacity:0;background:linear-gradient(112deg,transparent 38%,rgba(226,196,130,.5) 50%,transparent 62%);background-size:260% 100%;background-position:150% 0}
 @media(prefers-reduced-motion:reduce){.cz-f,.cz::before{animation:none}}
 </style>
@@ -150,8 +154,8 @@ dialog a{color:var(--btnh)}
 <p class="sub">Crea facturas de venta, cuentas de cobro y recibos de caja para tiendas y freelancers. Agrega el logo de tu negocio con solo una foto, con código QR. Gratis, sin registro: tus datos nunca salen de tu dispositivo.</p>
 
 <section class="cz" id="cz" aria-label="Ejemplos de documentos creados con la herramienta">
-<figure class="cz-i"><div class="cz-f"><img src="img/factura-1.webp?v=3" width="1000" height="1117" alt="Ejemplo de factura profesional 1" decoding="async"><span class="cz-s"></span></div></figure>
-<figure class="cz-i b"><div class="cz-f"><img src="img/factura-2.webp?v=3" width="1000" height="1117" alt="Ejemplo de factura profesional 2" decoding="async"><span class="cz-s"></span></div></figure>
+<figure class="cz-i"><div class="cz-f"><div class="cz-t"><img src="img/factura-1.webp?v=4" width="1000" height="1154" alt="Ejemplo de factura profesional 1" decoding="async"><span class="cz-s"></span><span class="cz-g"></span></div></div></figure>
+<figure class="cz-i b"><div class="cz-f"><div class="cz-t"><img src="img/factura-2.webp?v=4" width="1000" height="1154" alt="Ejemplo de factura profesional 2" decoding="async"><span class="cz-s"></span><span class="cz-g"></span></div></div></figure>
 </section>
 </header>
 <main>
@@ -306,6 +310,10 @@ const sh=[{opacity:0,backgroundPosition:'150% 0'},{opacity:1,offset:.2},{opacity
 [a,b].forEach(f=>f.querySelector('.cz-s').animate(sh,{duration:DUR*1.1,easing:'ease-in-out'}));
 Promise.all([A.finished,B.finished]).then(()=>{box.insertBefore(b,a);A.cancel();B.cancel();a.style.zIndex='';busy=false});
 }
+if(!reduce)box.querySelectorAll('.cz-i').forEach(f=>{const t=f.querySelector('.cz-t');
+f.addEventListener('pointermove',e=>{if(busy)return;const r=f.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;t.style.setProperty('--ry',(x-.5)*14+'deg');t.style.setProperty('--rx',(.5-y)*10+'deg');t.style.setProperty('--gx',x*100+'%');t.style.setProperty('--gy',y*100+'%');f.classList.add('on')});
+const off=()=>{t.style.removeProperty('--rx');t.style.removeProperty('--ry');f.classList.remove('on')};
+f.addEventListener('pointerleave',off);f.addEventListener('pointercancel',off)});
 setInterval(swap,TIEMPO);
 })();
 </script>
