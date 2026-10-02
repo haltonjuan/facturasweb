@@ -214,10 +214,12 @@ let tab=0,sty=3,logo='';
 const CT=['Crea tu recibo de venta','Crea tu cuenta de cobro','Crea tu recibo de caja'];
 const CU=[['USD','Dólar (USD)'],['COP','Peso colombiano (COP)'],['EUR','Euro (EUR)'],['MXN','Peso mexicano (MXN)'],['ARS','Peso argentino (ARS)'],['PEN','Sol peruano (PEN)'],['CLP','Peso chileno (CLP)'],['BRL','Real brasileño (BRL)'],['GBP','Libra esterlina (GBP)']];
 const fm=(n,c,x)=>{n=+n||0;if(c=='otra')return(x||'$')+' '+n.toLocaleString('es-CO',{maximumFractionDigits:2});const d=/COP|CLP/.test(c)?0:2;try{return n.toLocaleString('es-CO',{style:'currency',currency:c,minimumFractionDigits:d,maximumFractionDigits:d})}catch(e){return c+' '+n.toFixed(2)}};
+const DT=[['','Sin documento'],['NIT/RUT','NIT / RUT'],['C.C.','Cédula de ciudadanía'],['C.E.','Cédula de extranjería'],['DNI','DNI'],['Pasaporte','Pasaporte'],['Licencia de conducir','Licencia de conducir'],['RFC','RFC (México)'],['CUIT','CUIT / CUIL (Argentina)'],['RUC','RUC (Perú, Ecuador)'],['NIF','NIF / CIF (España)'],['Tax ID','Tax ID / EIN (EE. UU.)'],['otro','Otro (escribir nombre)']];
 const fld=(l,k,t='text',p='')=>`<label>${l}<input data-k="${k}" type="${t}" placeholder="${p}"${t=='number'?' min="0" step="any" inputmode="decimal"':''}></label>`;
 const ta=(l,k,h,p='')=>`<label>${l}<textarea data-k="${k}" style="min-height:${h}px" placeholder="${p}"></textarea></label>`;
-const EM=`<fieldset><legend>Datos del emisor</legend>${fld('Nombre o empresa','em','text','Mi Negocio S.A.S.')}<div class="r">${fld('NIT / RUT','nit')}${fld('Teléfono','tel','tel')}</div><div class="r">${fld('Correo','mail','email')}${fld('Dirección','dir')}</div></fieldset>`;
-const CL=`<fieldset><legend>Datos del cliente</legend>${fld('Nombre del cliente','cl')}<div class="r">${fld('NIT / CC','clnit')}${fld('Teléfono o dirección','cldir')}</div></fieldset>`;
+const DOC=(kt,kn,kx)=>`<div class="r"><label>Tipo de documento<select data-k="${kt}">${DT.map(o=>`<option value="${o[0]}">${o[1]}</option>`).join('')}</select></label>${fld('Número de documento',kn,'text','Solo si aplica')}</div><label data-dx="${kt}" hidden>Nombre del documento<input data-k="${kx}" placeholder="Ej. CURP, Matrícula..."></label>`;
+const EM=`<fieldset><legend>Datos del emisor</legend>${fld('Nombre o empresa','em','text','Mi Negocio S.A.S.')}${DOC('dt','nit','dtx')}<div class="r">${fld('Teléfono','tel','tel')}${fld('Correo','mail','email')}</div>${fld('Dirección','dir')}</fieldset>`;
+const CL=`<fieldset><legend>Datos del cliente</legend>${fld('Nombre del cliente','cl')}${DOC('cdt','clnit','cdtx')}${fld('Teléfono o dirección','cldir')}</fieldset>`;
 const MT=`<div class="sep"><div class="r">${fld('N.º de documento','num')}${fld('Fecha','date','date')}</div><label>Moneda<select data-k="cur">${CU.map(c=>`<option value="${c[0]}">${c[1]}</option>`).join('')}<option value="otra">Otra (escribir manualmente)</option></select></label><label data-cx hidden>Escribe tu moneda<input data-k="curx" placeholder="Ej: S/, Bs, CAD"></label></div>`;
 const PN=[
 EM+CL+MT+`<fieldset><legend>Artículos</legend><div class="it ih"><span>Descripción</span><span>Unid.</span><span>Precio</span><span></span></div><div id="rows"></div><button type="button" class="b g" id="ar">+ Añadir fila</button></fieldset>`+fld('Impuesto / IVA % (opcional)','tax','number','19')+ta('Notas (opcional)','nt',56),
@@ -235,12 +237,14 @@ function render(){
 const cu=g('cur')||'USD',cx=g('curx'),m=n=>fm(n,cu,cx);$$('[data-cx]').forEach(l=>l.hidden=cu!='otra');
 const ln=(l,v)=>v?`<div>${l?l+': ':''}${esc(v)}</div>`:'';
 const nv=v=>/^(no|n\/a|na|ninguno|ninguna|-+)\.?$/i.test(v)?'':v;
+const dl=(kt,kn,kx)=>{const n=nv(g(kn));if(!n)return'';const t=g(kt);return ln(t=='otro'?g(kx)||'Documento':t||'Documento',n)};
+['dt','cdt'].forEach(k=>$$('[data-dx="'+k+'"]').forEach(l=>l.hidden=g(k)!='otro'));
 const em=g('em'),d=g('date');
-const who=`<div class="who">${logo?`<img src="${logo}" alt="Logo">`:''}<div>${em?`<b style="font-size:17px">${esc(em)}</b>`:''}${ln('NIT/RUT',nv(g('nit')))}${ln('Tel',g('tel'))}${ln('Correo',g('mail'))}${ln('Dirección',g('dir'))}</div></div>`;
+const who=`<div class="who">${logo?`<img src="${logo}" alt="Logo">`:''}<div>${em?`<b style="font-size:17px">${esc(em)}</b>`:''}${dl('dt','nit','dtx')}${ln('Tel',g('tel'))}${ln('Correo',g('mail'))}${ln('Dirección',g('dir'))}</div></div>`;
 const meta=`<div class="meta"><h3>${TT[tab].toUpperCase()}</h3></div>`;
 const dt=d?new Date(d+'T12:00').toLocaleDateString('es-CO',{day:'numeric',month:'long',year:'numeric'}):'';
 const dc=g('num')||dt?`<div class="dc"><small class="mt">DOCUMENTO</small>${ln('N.º de documento',g('num'))}${ln('Fecha',dt)}</div>`:'';
-const c=(g('cl')?`<div><b>${esc(g('cl'))}</b></div>`:'')+ln('NIT/CC',nv(g('clnit')))+ln(/^[\d\s+()-]{7,}$/.test(g('cldir'))?'Tel':'Dirección',g('cldir'));
+const c=(g('cl')?`<div><b>${esc(g('cl'))}</b></div>`:'')+dl('cdt','clnit','cdtx')+ln(/^[\d\s+()-]{7,}$/.test(g('cldir'))?'Tel':'Dirección',g('cldir'));
 let h=`<div class="hd">${who}${meta}</div>`,tot=0;
 const cb=tab<2&&c?`<div class="bx"><small class="mt">${tab?'COBRAR A':'FACTURADO A'}</small>${c}</div>`:'<div></div>';
 if((tab<2&&c)||dc)h+=`<div class="rw">${cb}${dc}</div>`;
