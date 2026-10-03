@@ -24,7 +24,7 @@
 <meta name="twitter:description" content="Crea y descarga facturas de venta, cuentas de cobro para freelancers y recibos de caja en PDF de forma 100% gratuita. Diseños profesionales con código QR personalizado en tiempo real y optimizado para celular.">
 <meta name="twitter:image" content="https://facturasonline.lat/img/og.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Generador de Facturas, Cuentas de Cobro y Recibos en PDF","url":"https://facturasonline.lat/","applicationCategory":"BusinessApplication","operatingSystem":"Any","inLanguage":"es","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
 :root{--bg:#09090b;--card:#111114;--bd:rgba(255,255,255,.09);--in:#0c0c0e;--btn:#6b4bf5;--btnh:#7d5ff8;--gold:#6b4bf5;--tx:#f5f7fb;--mut:#97a3ba;--fn:Manrope,Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color-scheme:dark}[hidden]{display:none!important}
@@ -83,28 +83,33 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--btn);border-colo
 .doc .n{text-align:right;white-space:nowrap;font-family:var(--fn);font-variant-numeric:tabular-nums}
 .doc .tt{width:300px;margin-left:auto}
 .doc .ln{display:flex;justify-content:space-between;gap:12px;padding:5px 0}
-.doc .tot{margin-top:6px;padding:12px;font-size:18px;font-weight:700;font-family:var(--fn)}
+.doc .tot{margin-top:6px;padding:12px;font-size:18px;font-weight:700;font-family:var(--fn);background:#e8f5e9;color:#0f2a1d;border:1px solid #bfe3c8;border-radius:8px}
 .doc .ft{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-top:auto;padding-top:28px}
-.doc .qr{width:130px;text-align:center}
-.doc .qr div{display:inline-block}
-.doc .qr small{display:block;margin-top:4px;font-size:9px;line-height:1.3;color:#64748b}
+.doc .qr{width:150px;text-align:center}
+.doc .qrc{display:inline-block;padding:10px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;line-height:0}
+.doc .qr small{display:block;margin-top:6px;font-size:10px;line-height:1.35;color:#64748b}
+.doc .av{flex:none;width:46px;height:46px;border-radius:50%;background:#e2e8f0;color:#334155;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;letter-spacing:.02em}
+.doc .sg{display:flex;justify-content:space-between;gap:48px;margin-top:56px}
+.doc .sg div{flex:1;border-top:1px solid #94a3b8;padding-top:6px;text-align:center;font-size:11px;color:#64748b}
+.doc .bk{border:1px solid #cbd5e1;border-radius:10px;padding:12px 14px;margin-bottom:18px}
+.doc .bk small{display:block;margin-bottom:4px}
 .t1{font-weight:300}
 .t1 b,.t1 h3{font-weight:500}
 .t1 .hd{border-bottom:1px solid #e2e8f0}
 .t1 th{border-bottom:1px solid #e2e8f0;color:#64748b;font-weight:400}
 .t1 td{border-bottom:1px solid #f1f5f9}
-.t1 .tot{border-top:1px solid #1e293b;font-weight:500}
+.t1 .tot{font-weight:600}
 .t2 .hd{margin:-44px -44px 24px;padding:30px 44px;background:#312e81;color:#fff}
 .t2 .hd .mt{color:#c7d2fe}
 .t2 th{background:#e0e7ff;color:#312e81}
 .t2 tbody tr:nth-child(even){background:#f1f5f9}
-.t2 .tot{background:#312e81;color:#fff;border-radius:6px}
+.t2 .av{background:rgba(255,255,255,.2);color:#fff}
 .t3 h3,.t3 b{font-weight:800}
-.t3 .hd{border-bottom:3px solid #10b981}
+.t3 .hd{border-bottom:3px solid #334155}
 .t3 .tw{border:1px solid #cbd5e1;border-radius:12px;overflow:hidden}
 .t3 th{background:#f1f5f9}
 .t3 td{border-top:1px solid #e2e8f0}
-.t3 .tot{background:#d1fae5;color:#065f46;border-radius:12px;font-weight:800}
+.t3 .tot{font-weight:800}
 .st{margin:0 0 10px;font-size:1.05rem;font-weight:700;letter-spacing:-.01em}
 .ph{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
 .ph .st{margin:0}
@@ -124,7 +129,6 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--btn);border-colo
 .opt-toggle::before{content:"";order:2;width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-top:-4px;transition:transform .2s}
 .opt[open] .opt-toggle::after{content:"Cerrar"}
 .opt[open] .opt-toggle::before{transform:rotate(-135deg);margin-top:3px}
-#pw{position:absolute;left:-9999px;top:0;width:794px}
 .doc.mini{width:100%;max-width:560px;min-height:0;margin:0 auto;padding:16px;font-size:12px;border-radius:10px}
 .mini h3{font-size:14px}
 .mini .hd{flex-wrap:wrap;gap:8px;padding-bottom:10px;margin-bottom:12px}
@@ -139,8 +143,13 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--btn);border-colo
 .mini .tot{padding:8px 10px;font-size:14px}
 .mini p[style]{font-size:13px!important;line-height:1.8!important}
 .mini .ft{padding-top:14px}
-.mini .qr{width:76px}
+.mini .qr{width:96px}
+.mini .qrc{padding:6px}
 .mini .qrc img,.mini .qrc canvas{width:60px!important;height:60px!important}
+.mini .qr small{font-size:9px}
+.mini .av{width:34px;height:34px;font-size:12px}
+.mini .sg{margin-top:36px;gap:24px}
+.mini .sg div{font-size:10px}
 .mini.t2 .hd{margin:-16px -16px 12px;padding:14px 16px}
 .faq{margin:24px 0}
 .faq details{margin-bottom:8px;padding:12px 14px;background:var(--card);border:1px solid var(--bd);border-radius:12px}
@@ -192,7 +201,7 @@ dialog a{color:var(--btnh)}
 <details class="opt"><summary><span class="opt-title">Logo del negocio / Código QR</span><span class="opt-hint">(opcional)</span><span class="opt-toggle"></span></summary>
 <label>Logo de tu negocio<input id="lg" type="file" accept="image/*"></label>
 <label>Enlace para el QR (WhatsApp, Instagram o link de pago)<input id="qu" placeholder="https://..."></label>
-<label>Propósito del QR<select id="qp"><option value="pay">Recibir Pago</option><option value="wa">Contactar por WhatsApp</option><option value="ig">Seguir en Instagram</option></select></label>
+<label>Propósito del QR<select id="qp"><option value="none" selected>Sin seleccionar (no mostrar QR)</option><option value="pay">Recibir Pago</option><option value="wa">Contactar por WhatsApp</option><option value="ig">Seguir en Instagram</option></select></label>
 </details>
 </section>
 <aside class="card" id="pv" aria-label="Vista previa del documento">
@@ -202,7 +211,6 @@ dialog a{color:var(--btnh)}
 <button type="button" class="b big" id="dl">Descargar Factura en PDF</button>
 </aside>
 </div>
-<div id="pw"><div class="doc t1" id="doc"></div></div>
 <div class="ad"><!-- Espacio para Anuncio AdSense --></div>
 <section class="faq">
 <details><summary><h2>¿Cómo rellenar una cuenta de cobro legal para freelancers?</h2></summary>
@@ -235,74 +243,237 @@ dialog a{color:var(--btnh)}
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const TT=['Recibo de Venta','Cuenta de Cobro','Recibo de Caja'];
-const QL={pay:'扫描 Scan para pagar',wa:'扫描 Scan para escribir por WhatsApp',ig:'扫描 Scan para seguir en Instagram'};
-let tab=0,sty=3,logo='';
+const QT='Escanea para pagar o contactar';
+const TL=['Total','Valor a cobrar','Valor recibido'];
+let tab=0,sty=3,logo=null;
 const CT=['Crea tu recibo de venta','Crea tu cuenta de cobro','Crea tu recibo de caja'];
 const CU=[['USD','Dólar (USD)'],['COP','Peso colombiano (COP)'],['EUR','Euro (EUR)'],['MXN','Peso mexicano (MXN)'],['ARS','Peso argentino (ARS)'],['PEN','Sol peruano (PEN)'],['CLP','Peso chileno (CLP)'],['BRL','Real brasileño (BRL)'],['GBP','Libra esterlina (GBP)']];
 const fm=(n,c,x)=>{n=+n||0;if(c=='otra')return(x||'$')+' '+n.toLocaleString('es-CO',{maximumFractionDigits:2});const d=/COP|CLP/.test(c)?0:2;try{return n.toLocaleString('es-CO',{style:'currency',currency:c,minimumFractionDigits:d,maximumFractionDigits:d})}catch(e){return c+' '+n.toFixed(2)}};
 const DT=[['','Sin documento'],['NIT/RUT','NIT / RUT'],['C.C.','Cédula de ciudadanía'],['C.E.','Cédula de extranjería'],['DNI','DNI'],['Pasaporte','Pasaporte'],['Licencia de conducir','Licencia de conducir'],['RFC','RFC (México)'],['CUIT','CUIT / CUIL (Argentina)'],['RUC','RUC (Perú, Ecuador)'],['NIF','NIF / CIF (España)'],['Tax ID','Tax ID / EIN (EE. UU.)'],['otro','Otro (escribir nombre)']];
+const PM=['Efectivo','Transferencia bancaria','Tarjeta de crédito','Tarjeta débito','Plataforma digital','Cheque','Otro'];
 const fld=(l,k,t='text',p='')=>`<label>${l}<input data-k="${k}" type="${t}" placeholder="${p}"${t=='number'?' min="0" step="any" inputmode="decimal"':''}></label>`;
 const ta=(l,k,h,p='')=>`<label>${l}<textarea data-k="${k}" style="min-height:${h}px" placeholder="${p}"></textarea></label>`;
 const DOC=(kt,kn,kx)=>`<div class="r"><label>Tipo de documento<select data-k="${kt}">${DT.map(o=>`<option value="${o[0]}">${o[1]}</option>`).join('')}</select></label>${fld('Número de documento',kn,'text','Solo si aplica')}</div><label data-dx="${kt}" hidden>Nombre del documento<input data-k="${kx}" placeholder="Ej. CURP, Matrícula..."></label>`;
 const EM=`<fieldset><legend>Datos del emisor</legend>${fld('Nombre o empresa','em','text','Mi Negocio S.A.S.')}${DOC('dt','nit','dtx')}<div class="r">${fld('Teléfono','tel','tel')}${fld('Correo','mail','email')}</div>${fld('Dirección','dir')}</fieldset>`;
 const CL=`<fieldset><legend>Datos del cliente</legend>${fld('Nombre del cliente','cl')}${DOC('cdt','clnit','cdtx')}${fld('Teléfono o dirección','cldir')}</fieldset>`;
-const MT=`<div class="sep">${fld('Fecha','date','date')}<label>Moneda<select data-k="cur">${CU.map(c=>`<option value="${c[0]}">${c[1]}</option>`).join('')}<option value="otra">Otra (escribir manualmente)</option></select></label><label data-cx hidden>Escribe tu moneda<input data-k="curx" placeholder="Ej: S/, Bs, CAD"></label></div>`;
+const MT=`<div class="sep"><div class="r">${fld('Fecha','date','date')}${fld('N.º de consecutivo','nro','text','0001')}</div><label>Moneda<select data-k="cur">${CU.map(c=>`<option value="${c[0]}">${c[1]}</option>`).join('')}<option value="otra">Otra (escribir manualmente)</option></select></label><label data-cx hidden>Escribe tu moneda<input data-k="curx" placeholder="Ej: S/, Bs, CAD"></label></div>`;
 const PN=[
-EM+CL+MT+`<fieldset><legend>Artículos</legend><div class="it ih"><span>Descripción</span><span>Unid.</span><span>Precio</span><span></span></div><div id="rows"></div><button type="button" class="b g" id="ar">+ Añadir fila</button></fieldset>`+fld('Impuesto / IVA % (opcional)','tax','number','19')+fld('Descuento % (opcional)','dsc','number','Ej. 10')+ta('Notas (opcional)','nt',56),
-EM+CL+MT+ta('Servicios prestados','sv',90,'Describe el trabajo realizado...')+fld('Valor del trabajo','val','number')+`<fieldset><legend>Datos de transferencia bancaria</legend><div class="r">${fld('Banco','bk')}${fld('Tipo de cuenta','bt','text','Ahorros / Corriente')}</div>${fld('Número de cuenta','bn')}</fieldset>`,
-EM+MT+`<fieldset><legend>Recibo de caja</legend>${fld('Recibí de','cl','text','Nombre del cliente')}${fld('La suma de','amt','number')}${ta('Por concepto de','con',64,'Abono, anticipo, arriendo...')}</fieldset>`
+EM+CL+MT+`<fieldset><legend>Artículos</legend><div class="it ih"><span>Descripción</span><span>Unid.</span><span>Precio</span><span></span></div><div id="rows"></div><button type="button" class="b g" id="ar">+ Añadir fila</button></fieldset>`+fld('Impuesto / IVA % (opcional)','tax','number','19')+fld('Descuento % (opcional)','dsc','number','Ej. 10')+ta('Términos de garantía / notas (opcional)','nt',64,'Ej. Garantía de 3 meses en fallas técnicas. No se realizan devoluciones de dinero.'),
+EM+CL+MT+ta('Servicios prestados','sv',90,'Por concepto de: servicios profesionales de diseño UI/UX para sitio web - Fase 1')+fld('Valor del trabajo','val','number')+fld('Fecha de vencimiento o plazo','due','text','Ej. 15 de octubre de 2026 o 5 días hábiles')+`<fieldset><legend>Datos de transferencia bancaria</legend><div class="r">${fld('Banco','bk')}${fld('Tipo de cuenta','bt','text','Ahorros / Corriente')}</div>${fld('Número de cuenta','bn')}</fieldset>`,
+EM+MT+`<fieldset><legend>Recibo de caja</legend>${fld('Recibí de','cl','text','Nombre del cliente')}${fld('La suma de','amt','number')}${ta('Concepto detallado del ingreso','con',72,'Ej. Pago total de la factura N.º 105 o abono inicial para desarrollo web')}<label>Medio de pago<select data-k="pm">${PM.map(p=>`<option>${p}</option>`).join('')}</select></label></fieldset>`
 ];
 $('#pn').innerHTML=PN.map((h,i)=>`<div class="panel" id="p${i}"${i?' hidden':''}>${h}</div>`).join('');
 const row=()=>{const d=document.createElement('div');d.className='it';d.innerHTML='<input placeholder="Descripción"><input type="number" min="0" step="any" value="1" aria-label="Cantidad"><input type="number" min="0" step="any" placeholder="Precio" aria-label="Precio"><button type="button" class="b g x" title="Eliminar fila" aria-label="Eliminar fila">✕</button>';$('#rows').append(d)};
 row();
 const today=new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);
 $$('[data-k=date]').forEach(i=>i.value=today);
+$$('[data-k=nro]').forEach(i=>i.value='0001');
 $$('[data-k=cur]').forEach(i=>i.value='USD');
 const g=k=>{const i=$(`#p${tab} [data-k="${k}"]`);return i?i.value.trim():''};
-function render(){
-const cu=g('cur')||'USD',cx=g('curx'),m=n=>fm(n,cu,cx);$$('[data-cx]').forEach(l=>l.hidden=cu!='otra');
-const ln=(l,v)=>v?`<div>${l?l+': ':''}${esc(v)}</div>`:'';
+
+/* ===== Modelo de datos: la vista previa y el PDF salen de aquí, así siempre coinciden ===== */
 const nv=v=>/^(no|no aplica|n\/a|na|s\/n|sin documento|ninguno|ninguna|-+)\.?$/i.test(v)?'':v;
-const dl=(kt,kn,kx)=>{const n=nv(g(kn));if(!n)return'';const t=g(kt);return ln(t=='otro'?g(kx)||'Documento':t||'Documento',n)};
-['dt','cdt'].forEach(k=>$$('[data-dx="'+k+'"]').forEach(l=>l.hidden=g(k)!='otro'));
-const em=g('em'),d=g('date');
-const who=`<div class="who">${logo?`<img src="${logo}" alt="Logo">`:''}<div>${em?`<b style="font-size:17px">${esc(em)}</b>`:''}${dl('dt','nit','dtx')}${ln('Tel',g('tel'))}${ln('Correo',g('mail'))}${ln('Dirección',g('dir'))}</div></div>`;
-const meta=`<div class="meta"><h3>${TT[tab].toUpperCase()}</h3></div>`;
-const dt=d?new Date(d+'T12:00').toLocaleDateString('es-CO',{day:'numeric',month:'long',year:'numeric'}):'';
-const dc=dt?`<div class="dc"><small class="mt">FECHA</small><div>${esc(dt)}</div></div>`:'';
-const c=(g('cl')?`<div><b>${esc(g('cl'))}</b></div>`:'')+dl('cdt','clnit','cdtx')+ln(/^[\d\s+()-]{7,}$/.test(g('cldir'))?'Tel':'Dirección',g('cldir'));
-let h=`<div class="hd">${who}${meta}</div>`,tot=0;
-const cb=tab<2&&c?`<div class="bx"><small class="mt">${tab?'COBRAR A':'FACTURADO A'}</small>${c}</div>`:'<div></div>';
-if((tab<2&&c)||dc)h+=`<div class="rw">${cb}${dc}</div>`;
-if(tab==0){
-const rs=$$('#rows .it').map(r=>{const[a,q,p]=[...r.querySelectorAll('input')].map(i=>i.value.trim());return{d:a,q:+q||0,p:+p||0}}).filter(r=>r.d||r.p);
-const sub=rs.reduce((a,r)=>a+r.q*r.p,0),ds=Math.min(100,Math.max(0,+g('dsc')||0)),dv=sub*ds/100,tx=+g('tax')||0,iva=(sub-dv)*tx/100;tot=sub-dv+iva;
-h+=`<div class="tw"><table><thead><tr><th>Descripción</th><th class="n">Unid.</th><th class="n">Precio</th><th class="n">Importe</th></tr></thead><tbody>${rs.map(r=>`<tr><td>${esc(r.d)}</td><td class="n">${r.q}</td><td class="n">${m(r.p)}</td><td class="n">${m(r.q*r.p)}</td></tr>`).join('')}</tbody></table></div><div class="tt"><div class="ln"><span>Subtotal</span><span>${m(sub)}</span></div>${ds?`<div class="ln"><span>Descuento (${ds}%)</span><span>-${m(dv)}</span></div>`:''}${tx?`<div class="ln"><span>IVA (${tx}%)</span><span>${m(iva)}</span></div>`:''}<div class="ln tot"><span>Total</span><span>${m(tot)}</span></div></div>${g('nt')?`<p class="bx mt">${esc(g('nt'))}</p>`:''}`;
-}else if(tab==1){
-tot=+g('val')||0;
-const bk=ln('Banco',g('bk'))+ln('Tipo de cuenta',g('bt'))+ln('Número',g('bn'));
-h+=(g('sv')?`<div class="bx"><small class="mt">SERVICIOS PRESTADOS</small>${esc(g('sv'))}</div>`:'')+`<div class="tt"><div class="ln tot"><span>Valor a cobrar</span><span>${m(tot)}</span></div></div>`+(bk?`<div class="bx"><small class="mt">DATOS DE TRANSFERENCIA BANCARIA</small>${bk}</div>`:'');
-}else{
-tot=+g('amt')||0;
-h+=`<p style="font-size:17px;line-height:2.1">Recibí de: <b>${esc(g('cl'))||'__________'}</b>, la suma de: <b>${m(tot)}</b>, por concepto de: <b>${esc(g('con'))||'__________'}</b>.</p><div class="tt"><div class="ln tot"><span>Valor recibido</span><span>${m(tot)}</span></div></div>`;
-}
-let u=$('#qu').value.trim();const p=$('#qp').value;
+const idl=(kt,kn,kx)=>{const n=nv(g(kn));if(!n)return'';const t=g(kt);return(t=='otro'?g(kx)||'Documento':t||'Documento')+': '+n};
+const initials=s=>((s||'').match(/[\p{L}\p{N}]+/gu)||[]).slice(0,2).map(w=>w[0]).join('').toUpperCase();
+function qrUrl(){
+let u=$('#qu').value.trim();const p=$('#qp').value;if(p=='none')return'';
 if(u){if(p=='wa'&&/^\+?[\d\s-]{7,}$/.test(u))u='https://wa.me/'+u.replace(/\D/g,'');else if(p=='ig'&&!/^https?:/i.test(u))u='https://instagram.com/'+u.replace(/^@/,'')}
-if(u)h+=`<div class="ft"><span></span><div class="qr"><div class="qrc"></div><small>${QL[p]}</small></div></div>`;
-$('#doc').className='doc t'+sty;$('#doc').innerHTML=h;$('#mini').className='doc mini t'+sty;$('#mini').innerHTML=h;
-if(u)$$('.qrc').forEach(q=>{try{new QRCode(q,{text:u,width:92,height:92,correctLevel:QRCode.CorrectLevel.M})}catch(e){}});
-$('#lt').innerHTML='<span>Total</span><b>'+m(tot)+'</b>';
+return u}
+function model(){
+const cu=g('cur')||'USD',cx=g('curx');
+const dec=/COP|CLP/.test(cu)?0:2,K=Math.pow(10,dec),rd=x=>Math.round(((+x||0)+Number.EPSILON)*K)/K;
+const d=g('date');
+const D={tab,sty,m:n=>fm(n,cu,cx),cu,cx,title:TT[tab].toUpperCase(),nro:g('nro'),
+em:g('em'),id:idl('dt','nit','dtx'),tel:g('tel'),mail:g('mail'),dir:g('dir'),
+date:d?new Date(d+'T12:00').toLocaleDateString('es-CO',{day:'numeric',month:'long',year:'numeric'}):'',
+cl:g('cl'),cid:tab<2?idl('cdt','clnit','cdtx'):'',ccl:tab<2?(/^[\d\s+()-]{7,}$/.test(g('cldir'))?'Tel':'Dirección'):'',cdir:tab<2?g('cldir'):'',
+qr:qrUrl(),tl:TL[tab],tot:0};
+if(tab==0){
+D.rows=$$('#rows .it').map(r=>{const[a,q,p]=[...r.querySelectorAll('input')].map(i=>i.value.trim());const Q=+q||0,P=+p||0;return{d:a,q:Q,p:P,a:rd(Q*P)}}).filter(r=>r.d||r.p);
+D.sub=D.rows.reduce((a,r)=>a+r.a,0);
+D.ds=Math.min(100,Math.max(0,+g('dsc')||0));D.dv=rd(D.sub*D.ds/100);
+D.base=D.sub-D.dv;
+D.tx=+g('tax')||0;D.iva=rd(D.base*D.tx/100);
+D.tot=D.base+D.iva;D.nt=g('nt');
+}else if(tab==1){
+D.tot=rd(g('val'));D.sv=g('sv');D.due=g('due');
+D.bank=[['Banco',g('bk')],['Tipo de cuenta',g('bt')],['Número',g('bn')]].filter(b=>b[1]);
+D.sig=['Firma del emisor / autorizado','Firma de recibido'];
+}else{
+D.tot=rd(g('amt'));D.con=g('con');D.pm=g('pm');
+D.sig=['Entregado por','Recibido por'];
 }
+return D}
+
+/* ===== Vista previa (HTML) ===== */
+function htmlDoc(D){
+const ln=(l,v)=>v?`<div>${l?l+': ':''}${esc(v)}</div>`:'';
+const ini=initials(D.em);
+const mark=logo?`<img src="${logo.u}" alt="Logo">`:(ini?`<div class="av">${esc(ini)}</div>`:'');
+const who=`<div class="who">${mark}<div>${D.em?`<b style="font-size:17px">${esc(D.em)}</b>`:''}${D.id?`<div>${esc(D.id)}</div>`:''}${ln('Tel',D.tel)}${ln('Correo',D.mail)}${ln('Dirección',D.dir)}</div></div>`;
+let h=`<div class="hd">${who}<div class="meta"><h3>${D.title}</h3><div class="mt">N.º ${esc(D.nro)||'______'}</div></div></div>`;
+const c=(D.cl?`<div><b>${esc(D.cl)}</b></div>`:'')+(D.cid?`<div>${esc(D.cid)}</div>`:'')+ln(D.ccl,D.cdir);
+const cb=D.tab<2&&c?`<div class="bx"><small class="mt">${D.tab?'COBRAR A':'FACTURADO A'}</small>${c}</div>`:'<div></div>';
+const dc=(D.date?`<div><small class="mt">FECHA</small><div>${esc(D.date)}</div></div>`:'')+(D.due?`<div style="margin-top:6px"><small class="mt">VENCE / PLAZO</small><div>${esc(D.due)}</div></div>`:'');
+if((D.tab<2&&c)||dc)h+=`<div class="rw">${cb}<div class="dc">${dc}</div></div>`;
+const tot=`<div class="ln tot"><span>${D.tl}</span><span>${D.m(D.tot)}</span></div>`;
+if(D.tab==0){
+h+=`<div class="tw"><table><thead><tr><th>Descripción</th><th class="n">Unid.</th><th class="n">Precio</th><th class="n">Importe</th></tr></thead><tbody>${D.rows.map(r=>`<tr><td>${esc(r.d)}</td><td class="n">${r.q}</td><td class="n">${D.m(r.p)}</td><td class="n">${D.m(r.a)}</td></tr>`).join('')}</tbody></table></div><div class="tt"><div class="ln"><span>Subtotal</span><span>${D.m(D.sub)}</span></div>${D.ds?`<div class="ln"><span>Descuento (${D.ds}%)</span><span>-${D.m(D.dv)}</span></div><div class="ln"><span>Base imponible</span><span>${D.m(D.base)}</span></div>`:''}${D.tx?`<div class="ln"><span>IVA (${D.tx}%)</span><span>+${D.m(D.iva)}</span></div>`:''}${tot}</div>${D.nt?`<div class="bx" style="margin-top:18px"><small class="mt">TÉRMINOS DE GARANTÍA / NOTAS</small>${esc(D.nt)}</div>`:''}`;
+}else if(D.tab==1){
+h+=(D.sv?`<div class="bx"><small class="mt">SERVICIOS PRESTADOS</small>${esc(D.sv)}</div>`:'')+`<div class="tt">${tot}</div>`+(D.bank.length?`<div class="bk"><small class="mt">DATOS DE TRANSFERENCIA BANCARIA</small>${D.bank.map(b=>ln(b[0],b[1])).join('')}</div>`:'');
+}else{
+h+=`<div class="bx"><small class="mt">RECIBÍ DE</small><b>${esc(D.cl)||'__________'}</b></div><div class="bx"><small class="mt">POR CONCEPTO DE</small>${esc(D.con)||'__________'}</div><div class="bx"><small class="mt">MEDIO DE PAGO</small>${esc(D.pm)}</div><div class="tt">${tot}</div>`;
+}
+if(D.sig)h+=`<div class="sg"><div>${D.sig[0]}</div><div>${D.sig[1]}</div></div>`;
+if(D.qr)h+=`<div class="ft"><span></span><div class="qr"><div class="qrc"></div><small>${QT}</small></div></div>`;
+return h}
+function render(){
+const D=model();
+$$('[data-cx]').forEach(l=>l.hidden=D.cu!='otra');
+['dt','cdt'].forEach(k=>$$('[data-dx="'+k+'"]').forEach(l=>l.hidden=g(k)!='otro'));
+$('#mini').className='doc mini t'+sty;$('#mini').innerHTML=htmlDoc(D);
+if(D.qr)$$('.qrc').forEach(q=>{try{new QRCode(q,{text:D.qr,width:92,height:92,correctLevel:QRCode.CorrectLevel.M})}catch(e){}});
+$('#lt').innerHTML='<span>'+D.tl+'</span><b>'+D.m(D.tot)+'</b>';
+}
+
+/* ===== PDF con texto real (jsPDF: texto y vectores, sin imágenes de la página) ===== */
+const PW=210,PH=297,MX=14,MTOP=14,MBOT=14,CW=PW-2*MX;
+const WIN=' €‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ';
+const S=s=>Array.from(String(s==null?'':s).replace(/[    ]/g,' ')).map(ch=>{const c=ch.charCodeAt(0);return(c==10||(c>=32&&c<127)||(c>=161&&c<=255)||WIN.indexOf(ch)>0)?ch:'?'}).join('');
+const hx=h=>[1,3,5].map(i=>parseInt(h.substr(i,2),16));
+function qrMatrix(u){const t=document.createElement('div');const q=new QRCode(t,{text:u,width:92,height:92,correctLevel:QRCode.CorrectLevel.M});return q._oQRCode}
+function makePDF(D){
+const{jsPDF}=window.jspdf;
+const doc=new jsPDF({unit:'mm',format:'a4',compress:true});
+doc.setProperties({title:S(TT[D.tab]+(D.nro?' N.º '+D.nro:'')),creator:'facturasonline.lat'});
+const C={ink:'#1e293b',mut:'#64748b',ln:'#e2e8f0',mint:'#e8f5e9',mintLn:'#bfe3c8',mintInk:'#0f2a1d'};
+const st=D.sty;
+const fill=h=>doc.setFillColor(...hx(h)),stroke=h=>doc.setDrawColor(...hx(h)),ink=h=>doc.setTextColor(...hx(h));
+const font=(sz,b)=>{doc.setFont('helvetica',b?'bold':'normal');doc.setFontSize(sz)};
+const wrap=(t,w)=>doc.splitTextToSize(S(t),w);
+const tx=(t,x,y,o)=>doc.text(S(t),x,y,o);
+let y=0;
+const ensure=h=>{if(y+h>PH-MBOT){doc.addPage();y=MTOP}};
+/* --- Encabezado --- */
+const top=st==2?10:MTOP;
+const ini=initials(D.em).replace(/[^A-Z0-9]/gi,'');
+let mw=0,mh=0,lg=null;
+if(logo){const k=Math.min(40/logo.w,20/logo.h);mw=logo.w*k;mh=logo.h*k;lg=logo}else if(ini){mw=mh=15}
+const lx=MX+(mw?mw+4:0),lwid=112-(mw?mw+4:0);
+const tl=[];
+if(D.em){font(12.5,1);wrap(D.em,lwid).forEach((s,i)=>tl.push([s,12.5,1,5.6]))}
+font(9,0);
+[D.id,D.tel&&'Tel: '+D.tel,D.mail&&'Correo: '+D.mail,D.dir&&'Dirección: '+D.dir].filter(Boolean).forEach(s=>wrap(s,lwid).forEach(w=>tl.push([w,9,0,4.4])));
+const textH=tl.reduce((a,l)=>a+l[3],0);
+const hh=Math.max(textH,mh,13);
+const hc=st==2?'#ffffff':C.ink,hs=st==2?'#c7d2fe':C.mut;
+if(st==2){fill('#312e81');doc.rect(0,0,PW,top+hh+8,'F')}
+if(lg){try{doc.addImage(lg.u,lg.t,MX,top,mw,mh)}catch(e){}}
+else if(ini){fill(st==2?'#4f4aa8':'#e2e8f0');doc.circle(MX+7.5,top+7.5,7.5,'F');font(11,1);ink(st==2?'#ffffff':'#334155');tx(ini,MX+7.5,top+9.2,{align:'center'})}
+let ty=top+4.2;
+tl.forEach(l=>{font(l[1],l[2]);ink(l[2]?hc:(st==2?'#e0e7ff':'#475569'));tx(l[0],lx,ty);ty+=l[3]});
+font(15,1);ink(hc);tx(D.title,PW-MX,top+5,{align:'right'});
+font(10,0);ink(hs);tx('N.º '+(D.nro||'______'),PW-MX,top+11,{align:'right'})
+const hb=top+hh;
+if(st==2){y=hb+8+9}
+else{stroke(st==3?'#334155':C.ln);doc.setLineWidth(st==3?.9:.25);doc.line(MX,hb+4.5,PW-MX,hb+4.5);y=hb+13}
+/* --- Cliente y fechas --- */
+const lab=(t,x,yy,o)=>{font(7.5,1);ink(C.mut);tx(t,x,yy,o)};
+const yi=y;let yl=y;
+if(D.tab<2&&(D.cl||D.cid||D.cdir)){
+lab(D.tab?'COBRAR A':'FACTURADO A',MX,yl);yl+=4.6;
+if(D.cl){font(10.5,1);ink(C.ink);wrap(D.cl,100).forEach(s=>{tx(s,MX,yl);yl+=4.8})}
+font(9.5,0);ink('#334155');
+[D.cid,D.cdir&&D.ccl+': '+D.cdir].filter(Boolean).forEach(s=>wrap(s,100).forEach(w=>{tx(w,MX,yl);yl+=4.4}))}
+let yr=y;
+if(D.date){lab('FECHA',PW-MX,yr,{align:'right'});yr+=4.6;font(10,0);ink(C.ink);tx(D.date,PW-MX,yr,{align:'right'});yr+=6}
+if(D.due){lab('VENCE / PLAZO',PW-MX,yr,{align:'right'});yr+=4.6;font(10,0);ink(C.ink);wrap(D.due,70).forEach(s=>{tx(s,PW-MX,yr,{align:'right'});yr+=4.6});yr+=1.4}
+y=Math.max(yl,yr)>yi?Math.max(yl,yr)+4:y;
+/* --- Bloques --- */
+const block=(label,text,bold)=>{
+ensure(14);lab(label,MX,y);y+=4.8;font(10.5,bold);ink(C.ink);
+wrap(text,CW).forEach(s=>{ensure(5);tx(s,MX,y);y+=4.8});y+=4};
+const totalBox=()=>{
+const w=82,x=PW-MX-w,hgt=12;ensure(hgt+2);
+fill(C.mint);stroke(C.mintLn);doc.setLineWidth(.3);doc.roundedRect(x,y,w,hgt,2,2,'FD');
+font(11,1);ink(C.mintInk);tx(D.tl,x+4,y+7.6);font(13,1);tx(D.m(D.tot),x+w-4,y+7.8,{align:'right'});y+=hgt+6};
+/* --- Contenido por documento --- */
+if(D.tab==0){
+const qR=MX+104,pR=MX+140,aR=PW-MX;
+const thead=()=>{
+const hgt=8;ensure(hgt+10);
+if(st==1){stroke(C.ln);doc.setLineWidth(.25);doc.line(MX,y+hgt,PW-MX,y+hgt)}
+else{fill(st==2?'#e0e7ff':'#f1f5f9');doc.rect(MX,y,CW,hgt,'F')}
+font(8,st==1?0:1);ink(st==2?'#312e81':C.mut);
+tx('DESCRIPCIÓN',MX+2,y+5.2);tx('UNID.',qR,y+5.2,{align:'right'});tx('PRECIO',pR,y+5.2,{align:'right'});tx('IMPORTE',aR-2,y+5.2,{align:'right'});
+y+=hgt};
+thead();
+D.rows.forEach((r,i)=>{
+font(10,0);const dl=wrap(r.d||'',80);const hgt=Math.max(dl.length*4.5,4.5)+4.4;
+if(y+hgt>PH-MBOT){doc.addPage();y=MTOP;thead()}
+if(st==2&&i%2){fill('#f1f5f9');doc.rect(MX,y,CW,hgt,'F')}
+ink(C.ink);dl.forEach((s,j)=>tx(s,MX+2,y+5.4+j*4.5));
+tx(String(r.q),qR,y+5.4,{align:'right'});tx(D.m(r.p),pR,y+5.4,{align:'right'});tx(D.m(r.a),aR-2,y+5.4,{align:'right'});
+stroke(C.ln);doc.setLineWidth(.2);doc.line(MX,y+hgt,PW-MX,y+hgt);y+=hgt});
+y+=6;
+const tr=[['Subtotal',D.m(D.sub)]];
+if(D.ds){tr.push(['Descuento ('+D.ds+'%)','-'+D.m(D.dv)]);tr.push(['Base imponible',D.m(D.base)])}
+if(D.tx)tr.push(['IVA ('+D.tx+'%)','+'+D.m(D.iva)]);
+ensure(tr.length*6.5+20);
+tr.forEach(l=>{font(10,0);ink('#475569');tx(l[0],PW-MX-82+4,y+4);ink(C.ink);tx(l[1],PW-MX-4,y+4,{align:'right'});y+=6.5});
+y+=2;totalBox();
+if(D.nt)block('TÉRMINOS DE GARANTÍA / NOTAS',D.nt,0);
+}else if(D.tab==1){
+if(D.sv)block('SERVICIOS PRESTADOS',D.sv,0);
+totalBox();
+if(D.bank.length){
+const hgt=9+D.bank.length*5.2+3;ensure(hgt+2);
+stroke('#cbd5e1');doc.setLineWidth(.3);doc.roundedRect(MX,y,CW,hgt,2.5,2.5,'S');
+lab('DATOS DE TRANSFERENCIA BANCARIA',MX+5,y+6);
+let by=y+11.5;D.bank.forEach(b=>{font(10,0);ink(C.mut);tx(b[0]+':',MX+5,by);font(10,1);ink(C.ink);tx(b[1],MX+42,by);by+=5.2});
+y+=hgt+6}
+}else{
+block('RECIBÍ DE',D.cl||'__________',1);
+block('POR CONCEPTO DE',D.con||'__________',0);
+block('MEDIO DE PAGO',D.pm,0);
+totalBox();
+}
+/* --- Firmas --- */
+if(D.sig){
+ensure(34);y+=20;stroke('#94a3b8');doc.setLineWidth(.3);
+doc.line(MX,y,MX+76,y);doc.line(PW-MX-76,y,PW-MX,y);
+font(8.5,0);ink(C.mut);tx(D.sig[0],MX+38,y+4.6,{align:'center'});tx(D.sig[1],PW-MX-38,y+4.6,{align:'center'});y+=10}
+/* --- QR vectorial (al pie de la última página) --- */
+if(D.qr){
+const bw=36,bh=bw+9;let yq=Math.max(y+4,PH-MBOT-bh);
+if(yq+bh>PH-MBOT){doc.addPage();yq=PH-MBOT-bh}
+const xq=PW-MX-bw;
+fill('#ffffff');stroke(C.ln);doc.setLineWidth(.25);doc.roundedRect(xq,yq,bw,bw,2,2,'FD');
+try{const q=qrMatrix(D.qr),n=q.getModuleCount(),pad=3.2,cs=(bw-2*pad)/n;fill('#000000');
+for(let r=0;r<n;r++)for(let c=0;c<n;c++)if(q.isDark(r,c))doc.rect(xq+pad+c*cs,yq+pad+r*cs,cs+.02,cs+.02,'F')}catch(e){}
+font(7.5,0);ink(C.mut);wrap(QT,bw).forEach((s,i)=>tx(s,xq+bw/2,yq+bw+4+i*3.4,{align:'center'}))}
+const fn=(TT[D.tab]+'-'+(g('date')||'documento')).replace(/[^\w-]+/g,'-')+'.pdf';
+doc.save(fn)}
+
+/* ===== Eventos ===== */
 document.addEventListener('input',e=>{const k=e.target.dataset.k;if(k)$$(`[data-k="${k}"]`).forEach(x=>{if(x!==e.target)x.value=e.target.value});render()});
 document.addEventListener('click',e=>{const x=e.target.closest('.x');if(x){x.parentElement.remove();render()}});
 $('#ar').onclick=()=>{row();render()};
 $$('nav button').forEach((b,i)=>b.onclick=()=>{tab=i;$('#ct').textContent=CT[i];$$('nav button').forEach((x,j)=>x.setAttribute('aria-selected',j==i));$$('.panel').forEach((p,j)=>p.hidden=j!=i);render()});
 $('#sty').onchange=e=>{sty=+e.target.value;render()};
-$('#lg').onchange=e=>{const f=e.target.files[0];if(!f){logo='';return render()}const r=new FileReader();r.onload=()=>{logo=r.result;render()};r.readAsDataURL(f)};
-$('#dl').onclick=async()=>{
-render();const d=$('#doc');
-try{await html2pdf().set({margin:0,filename:(TT[tab]+'-'+(g('date')||'documento')).replace(/[^\w-]+/g,'-')+'.pdf',image:{type:'jpeg',quality:.98},html2canvas:{scale:2,useCORS:true,backgroundColor:'#fff',scrollY:0,windowWidth:794},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},pagebreak:{mode:['css','legacy'],avoid:'tr'}}).from(d).save()}
-catch(e){alert('No se pudo generar el PDF. Verifica tu conexión (las librerías se cargan por CDN) e inténtalo de nuevo.')}
+/* Logo: se lee en local (FileReader), se reduce y se guarda como PNG/JPG que jsPDF entiende */
+$('#lg').onchange=e=>{const f=e.target.files[0];if(!f){logo=null;return render()}
+const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{
+const k=Math.min(1,700/Math.max(im.width,im.height)),w=Math.max(1,Math.round(im.width*k)),h=Math.max(1,Math.round(im.height*k));
+const cv=document.createElement('canvas');cv.width=w;cv.height=h;const cx=cv.getContext('2d');
+const png=/png|webp|gif|svg/.test(f.type);if(!png){cx.fillStyle='#fff';cx.fillRect(0,0,w,h)}
+cx.drawImage(im,0,0,w,h);
+logo={u:cv.toDataURL(png?'image/png':'image/jpeg',.92),t:png?'PNG':'JPEG',w,h};render()};
+im.onerror=()=>{logo=null;render()};im.src=r.result};r.readAsDataURL(f)};
+$('#dl').onclick=()=>{
+render();
+try{if(!window.jspdf)throw 0;makePDF(model())}
+catch(e){console.error(e);alert('No se pudo generar el PDF. Verifica tu conexión (la librería se carga por CDN) e inténtalo de nuevo.')}
 };
 const R=document.documentElement,tg=$('#tg'),th=l=>{R.dataset.theme=l;tg.textContent=l?'☾':'☀';try{localStorage.setItem('th',l)}catch(e){}};
 try{th(localStorage.getItem('th')||'')}catch(e){}
