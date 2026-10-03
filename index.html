@@ -27,8 +27,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-:root{--czb:rgba(176,184,214,.3);--bg:#09090b;--card:#111114;--bd:rgba(255,255,255,.09);--in:#0c0c0e;--btn:#6b4bf5;--btnh:#7d5ff8;--gold:#6b4bf5;--tx:#f5f7fb;--mut:#97a3ba;--fn:Manrope,Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color-scheme:dark}[hidden]{display:none!important}
-[data-theme=light]{--czb:rgba(15,23,42,.16);--bg:#fff;--card:#f4f6fa;--bd:#dde3ec;--in:#fff;--gold:#6b4bf5;--tx:#0f172a;--mut:#64748b;color-scheme:light}
+:root{--bg:#09090b;--card:#111114;--bd:rgba(255,255,255,.09);--in:#0c0c0e;--btn:#6b4bf5;--btnh:#7d5ff8;--gold:#6b4bf5;--tx:#f5f7fb;--mut:#97a3ba;--fn:Manrope,Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color-scheme:dark}[hidden]{display:none!important}
+[data-theme=light]{--bg:#fff;--card:#f4f6fa;--bd:#dde3ec;--in:#fff;--gold:#6b4bf5;--tx:#0f172a;--mut:#64748b;color-scheme:light}
 *{box-sizing:border-box}
 button,input,select,textarea{font:inherit}
 body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 var(--fn);-webkit-font-smoothing:antialiased}
@@ -114,13 +114,16 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--btn);border-colo
 .ih span{font-size:11px;color:var(--mut)}
 .hint{margin:0 0 6px;font-size:12px;color:var(--mut)}
 .opt{position:relative;margin:0 0 16px;border:1px solid rgba(107,75,245,.35);border-radius:12px;padding:20px 14px 14px}
-.opt summary{cursor:pointer;list-style:none;display:block}
+.opt summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:30px}
 .opt summary::-webkit-details-marker{display:none}
+.opt[open] summary{margin-bottom:12px}
 .opt-title{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--card);padding:0 10px;font-weight:700;font-size:12.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
-.opt-hint{display:block;text-align:left;font-size:12px;color:var(--mut);font-weight:500}
-.opt-toggle{display:block;text-align:center;margin-top:6px;font-size:12px;color:var(--tx);font-weight:600}
+.opt-hint{font-size:13px;font-weight:500;color:var(--mut)}
+.opt-toggle{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.01em;color:var(--gold)}
 .opt-toggle::after{content:"Toca para abrir"}
+.opt-toggle::before{content:"";order:2;width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-top:-4px;transition:transform .2s}
 .opt[open] .opt-toggle::after{content:"Cerrar"}
+.opt[open] .opt-toggle::before{transform:rotate(-135deg);margin-top:3px}
 #pw{position:absolute;left:-9999px;top:0;width:794px}
 .doc.mini{width:100%;max-width:560px;min-height:0;margin:0 auto;padding:16px;font-size:12px;border-radius:10px}
 .mini h3{font-size:14px}
@@ -153,15 +156,16 @@ dialog a{color:var(--btnh)}
 
 /* ===== Fotos de ejemplo: cinta continua de derecha a izquierda ===== */
 .cz{--w:clamp(150px,40vw,320px);--g:14px;width:min(calc(100% - 44px),780px);margin:22px auto 8px;padding:12px 0;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;}
-.cz.on{-webkit-mask-image:linear-gradient(90deg,transparent,#000 3.5%,#000 96.5%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3.5%,#000 96.5%,transparent)}
 .cz-k{display:flex;justify-content:center}
 .cz-k.run{justify-content:flex-start;width:max-content;will-change:transform;animation:czm var(--d,12s) linear infinite}
 @keyframes czm{to{transform:translate3d(var(--p,-600px),0,0)}}
 .cz.hold .cz-k{animation-play-state:paused}
-.cz-i{flex:none;width:var(--w);margin:0 var(--g) 0 0;border:1px solid var(--czb);border-radius:5.5%/4.77%;overflow:hidden}
+.cz-i{flex:none;width:var(--w);margin:0 var(--g) 0 0;border-radius:5.5%/4.77%;overflow:hidden}
 .cz-k:not(.run) .cz-i:last-child{margin-right:0}
 .cz-i img{display:block;width:100%;height:auto;pointer-events:none;-webkit-user-drag:none}
 </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GSDM0DSMY7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-GSDM0DSMY7");</script>
 </head>
 <body>
 <button id="tg" type="button" aria-label="Cambiar entre modo oscuro y modo claro" title="Modo claro / oscuro">☀</button>
@@ -210,11 +214,13 @@ dialog a{color:var(--btnh)}
 </section>
 </main>
 <footer>
+<p style="margin-bottom:10px"><a href="/cuenta-de-cobro" style="color:inherit">Cuenta de cobro</a> · <a href="/recibo-de-caja" style="color:inherit">Recibo de caja</a> · <a href="/recibo-de-venta" style="color:inherit">Recibo de venta</a> · <a href="/recibo-de-arriendo" style="color:inherit">Recibo de arriendo</a> · <a href="/cuenta-de-cobro-prestacion-de-servicios" style="color:inherit">Cuenta de cobro por prestación de servicios</a> · <a href="/recibo-de-pago-de-nomina" style="color:inherit">Recibo de nómina</a> · <a href="/recibo-de-anticipo" style="color:inherit">Recibo de anticipo</a> · <a href="/comprobante-de-pago" style="color:inherit">Comprobante de pago</a></p>
 <p>© 2026 Generador de Facturas Gratis Online</p>
 <button type="button" data-m="m1">Política de Privacidad</button><button type="button" data-m="m2">Términos de Servicio</button><button type="button" data-m="m3">Contacto</button>
 </footer>
 <dialog id="m1"><h3>Política de Privacidad</h3>
 <p>Este generador funciona 100% en tu navegador: los datos que escribes (emisor, cliente, montos y logo) no se envían ni se almacenan en ningún servidor; solo se usan para crear tu PDF en tu dispositivo.</p>
+<p>Analítica: usamos Google Analytics para contar visitas y entender qué páginas se usan (país, dispositivo y página visitada), con cookies y sin identificar personalmente a nadie. Los datos de tus facturas no se envían a Analytics. Puedes bloquear estas cookies desde tu navegador o con el complemento de inhabilitación de Google Analytics.</p>
 <p>Cookies y publicidad: este sitio puede mostrar anuncios de Google AdSense. Google y sus socios usan cookies para mostrar anuncios según tus visitas a este y otros sitios. Puedes desactivar la personalización en adssettings.google.com. Al seguir navegando aceptas el uso de estas cookies.</p>
 <p>Consultas sobre privacidad: <a href="mailto:haltondarkness@gmail.com">haltondarkness@gmail.com</a>. Última actualización: octubre de 2026.</p>
 <button type="button" class="b" data-c>Cerrar</button></dialog>
