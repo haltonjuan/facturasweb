@@ -27,8 +27,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-:root{--bg:#060814;--card:#0d1230;--bd:rgba(255,255,255,.09);--in:#090d26;--btn:#5b63f2;--btnh:#6e75f5;--gold:#dcc58f;--tx:#f5f7fb;--mut:#97a3ba;--fn:Manrope,Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color-scheme:dark}[hidden]{display:none!important}
-[data-theme=light]{--bg:#fff;--card:#f4f6fa;--bd:#dde3ec;--in:#fff;--gold:#8a6a2c;--tx:#0f172a;--mut:#64748b;color-scheme:light}
+:root{--czb:rgba(176,184,214,.4);--bg:#060814;--card:#0d1230;--bd:rgba(255,255,255,.09);--in:#090d26;--btn:#5b63f2;--btnh:#6e75f5;--gold:#dcc58f;--tx:#f5f7fb;--mut:#97a3ba;--fn:Manrope,Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color-scheme:dark}[hidden]{display:none!important}
+[data-theme=light]{--czb:rgba(15,23,42,.16);--bg:#fff;--card:#f4f6fa;--bd:#dde3ec;--in:#fff;--gold:#8a6a2c;--tx:#0f172a;--mut:#64748b;color-scheme:light}
 *{box-sizing:border-box}
 button,input,select,textarea{font:inherit}
 body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 var(--fn);-webkit-font-smoothing:antialiased}
@@ -144,24 +144,16 @@ dialog::backdrop{background:rgba(0,0,0,.65)}
 dialog p{color:var(--mut)}
 dialog a{color:var(--btnh)}
 
-/* ===== Fotos de ejemplo: 2 fotos, intercambio cada 4 s ===== */
-.cz{position:relative;isolation:isolate;perspective:1400px;width:min(100%,780px);margin:22px auto 8px;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:center}
-.cz::before{content:"";position:absolute;inset:-10% -6%;z-index:-1;pointer-events:none;background:radial-gradient(55% 52% at 50% 50%,rgba(220,190,120,.22),transparent 72%);filter:blur(28px);animation:czp 6s ease-in-out infinite}
-@keyframes czp{50%{opacity:.5;transform:scale(1.07)}}
-.cz-i{margin:0;will-change:transform}
-.cz-f{position:relative;animation:czf 6s ease-in-out infinite}
-.cz-i.b .cz-f{animation-delay:-3s}
-@keyframes czf{50%{transform:translateY(-6px)}}
-.cz-i img{display:block;width:100%;height:auto;filter:drop-shadow(0 18px 28px rgba(0,0,0,.38)) drop-shadow(0 0 1px rgba(220,197,143,.6));-webkit-user-drag:none;user-select:none}
-.cz-i{touch-action:pan-y}
-.cz-t{position:relative;transition:transform .35s ease;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
-.cz-g{position:absolute;inset:0;border-radius:5.5%/4.92%;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,236,190,.32),transparent 55%)}
-.cz-i.on .cz-g{opacity:1}
-.cz-s{position:absolute;inset:0;border-radius:5.5%/4.92%;pointer-events:none;opacity:0;background:linear-gradient(112deg,transparent 38%,rgba(226,196,130,.5) 50%,transparent 62%);background-size:260% 100%;background-position:150% 0}
-@media(prefers-reduced-motion:reduce){.cz-f,.cz::before{animation:none}}
+/* ===== Fotos de ejemplo: cinta continua de derecha a izquierda ===== */
+.cz{--w:clamp(150px,40vw,320px);--g:14px;width:min(calc(100% - 44px),780px);margin:22px auto 8px;padding:12px 0;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
+.cz-k{display:flex;justify-content:center}
+.cz-k.run{justify-content:flex-start;width:max-content;will-change:transform;animation:czm var(--d,12s) linear infinite}
+@keyframes czm{to{transform:translate3d(var(--p,-600px),0,0)}}
+.cz.hold .cz-k{animation-play-state:paused}
+.cz-i{flex:none;width:var(--w);margin:0 var(--g) 0 0;border:1px solid var(--czb);border-radius:5.5%/4.77%;overflow:hidden;box-shadow:0 8px 22px -10px rgba(0,0,0,.65)}
+.cz-k:not(.run) .cz-i:last-child{margin-right:0}
+.cz-i img{display:block;width:100%;height:auto;pointer-events:none;-webkit-user-drag:none}
 </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GSDM0DSMY7"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-GSDM0DSMY7");</script>
 </head>
 <body>
 <button id="tg" type="button" aria-label="Cambiar entre modo oscuro y modo claro" title="Modo claro / oscuro">☀</button>
@@ -169,10 +161,10 @@ dialog a{color:var(--btnh)}
 <h1>Generador Gratis de Facturas, Cuentas de Cobro y Recibos en PDF con Logo y QR</h1>
 <p class="sub">Crea facturas de venta, cuentas de cobro y recibos de caja para tiendas y freelancers. Agrega el logo de tu negocio con solo una foto, con código QR. Gratis, sin registro: tus datos nunca salen de tu dispositivo.</p>
 
-<section class="cz" id="cz" aria-label="Ejemplos de documentos creados con la herramienta">
-<figure class="cz-i"><div class="cz-f"><div class="cz-t"><img src="img/factura-1.webp?v=4" width="1000" height="1154" alt="Ejemplo de factura profesional 1" decoding="async"><span class="cz-s"></span><span class="cz-g"></span></div></div></figure>
-<figure class="cz-i b"><div class="cz-f"><div class="cz-t"><img src="img/factura-2.webp?v=4" width="1000" height="1154" alt="Ejemplo de factura profesional 2" decoding="async"><span class="cz-s"></span><span class="cz-g"></span></div></div></figure>
-</section>
+<section class="cz" id="cz" aria-label="Ejemplos de documentos creados con la herramienta"><div class="cz-k" id="czk">
+<figure class="cz-i"><img src="img/factura-1.webp?v=5" width="1000" height="1154" alt="Ejemplo de factura profesional 1" decoding="async" draggable="false"></figure>
+<figure class="cz-i"><img src="img/factura-2.webp?v=5" width="1000" height="1154" alt="Ejemplo de factura profesional 2" decoding="async" draggable="false"></figure>
+</div></section>
 </header>
 <main>
 <div class="ad"><!-- Espacio para Anuncio AdSense --></div>
@@ -210,13 +202,11 @@ dialog a{color:var(--btnh)}
 </section>
 </main>
 <footer>
-<p style="margin-bottom:10px"><a href="/cuenta-de-cobro" style="color:inherit">Cuenta de cobro</a> · <a href="/recibo-de-caja" style="color:inherit">Recibo de caja</a> · <a href="/recibo-de-venta" style="color:inherit">Recibo de venta</a> · <a href="/recibo-de-arriendo" style="color:inherit">Recibo de arriendo</a> · <a href="/cuenta-de-cobro-prestacion-de-servicios" style="color:inherit">Cuenta de cobro por prestación de servicios</a> · <a href="/recibo-de-pago-de-nomina" style="color:inherit">Recibo de nómina</a> · <a href="/recibo-de-anticipo" style="color:inherit">Recibo de anticipo</a> · <a href="/comprobante-de-pago" style="color:inherit">Comprobante de pago</a></p>
 <p>© 2026 Generador de Facturas Gratis Online</p>
 <button type="button" data-m="m1">Política de Privacidad</button><button type="button" data-m="m2">Términos de Servicio</button><button type="button" data-m="m3">Contacto</button>
 </footer>
 <dialog id="m1"><h3>Política de Privacidad</h3>
 <p>Este generador funciona 100% en tu navegador: los datos que escribes (emisor, cliente, montos y logo) no se envían ni se almacenan en ningún servidor; solo se usan para crear tu PDF en tu dispositivo.</p>
-<p>Analítica: usamos Google Analytics para contar visitas y entender qué páginas se usan (país, dispositivo y página visitada), con cookies y sin identificar personalmente a nadie. Los datos de tus facturas no se envían a Analytics. Puedes bloquear estas cookies desde tu navegador o con el complemento de inhabilitación de Google Analytics.</p>
 <p>Cookies y publicidad: este sitio puede mostrar anuncios de Google AdSense. Google y sus socios usan cookies para mostrar anuncios según tus visitas a este y otros sitios. Puedes desactivar la personalización en adssettings.google.com. Al seguir navegando aceptas el uso de estas cookies.</p>
 <p>Consultas sobre privacidad: <a href="mailto:haltondarkness@gmail.com">haltondarkness@gmail.com</a>. Última actualización: octubre de 2026.</p>
 <button type="button" class="b" data-c>Cerrar</button></dialog>
@@ -311,28 +301,18 @@ render();
 </script>
 <script>
 (()=>{
-/* ===== EDITA AQUÍ: tiempo entre intercambios (ms) y duración del movimiento ===== */
-const TIEMPO=4000,DUR=1000;
-const box=document.getElementById('cz'),reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-let busy=false;
-function swap(){
-if(busy||document.hidden)return;
-const[a,b]=box.children,ra=a.getBoundingClientRect(),rb=b.getBoundingClientRect();
-if(reduce){box.insertBefore(b,a);return}
-const dx=rb.left-ra.left,dy=rb.top-ra.top,o={duration:DUR,easing:'cubic-bezier(.65,0,.35,1)',fill:'forwards'};
-busy=true;a.style.zIndex=2;
-const mv=(x,y,z,r,sc)=>`translate3d(${x}px,${y}px,${z}px) rotateY(${r}deg) scale(${sc})`;
-const A=a.animate([{transform:mv(0,0,0,0,1)},{transform:mv(dx/2,dy/2-10,70,-11,1.06)},{transform:mv(dx,dy,0,0,1)}],o);
-const B=b.animate([{transform:mv(0,0,0,0,1),filter:'brightness(1)'},{transform:mv(-dx/2,-dy/2+6,-90,11,.94),filter:'brightness(.86)'},{transform:mv(-dx,-dy,0,0,1),filter:'brightness(1)'}],o);
-const sh=[{opacity:0,backgroundPosition:'150% 0'},{opacity:1,offset:.2},{opacity:1,offset:.8},{opacity:0,backgroundPosition:'-50% 0'}];
-[a,b].forEach(f=>f.querySelector('.cz-s').animate(sh,{duration:DUR*1.1,easing:'ease-in-out'}));
-Promise.all([A.finished,B.finished]).then(()=>{box.insertBefore(b,a);A.cancel();B.cancel();a.style.zIndex='';busy=false});
-}
-if(!reduce)box.querySelectorAll('.cz-i').forEach(f=>{const t=f.querySelector('.cz-t');
-f.addEventListener('pointermove',e=>{if(busy)return;const r=f.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;t.style.setProperty('--ry',(x-.5)*14+'deg');t.style.setProperty('--rx',(.5-y)*10+'deg');t.style.setProperty('--gx',x*100+'%');t.style.setProperty('--gy',y*100+'%');f.classList.add('on')});
-const off=()=>{t.style.removeProperty('--rx');t.style.removeProperty('--ry');f.classList.remove('on')};
-f.addEventListener('pointerleave',off);f.addEventListener('pointercancel',off)});
-setInterval(swap,TIEMPO);
+/* ===== EDITA AQUÍ: velocidad de la cinta en píxeles por segundo ===== */
+const SPEED=85;
+const box=document.getElementById('cz'),trk=document.getElementById('czk');
+if(!box||!trk||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+const base=[...trk.children];
+for(let i=0;i<2;i++)base.forEach(f=>{const c=f.cloneNode(true),m=c.querySelector('img');c.setAttribute('aria-hidden','true');m.alt='';trk.append(c)});
+trk.classList.add('run');
+const calc=()=>{const f=trk.firstElementChild,P=(f.getBoundingClientRect().width+(parseFloat(getComputedStyle(f).marginRight)||0))*base.length;trk.style.setProperty('--p',-P+'px');trk.style.setProperty('--d',P/SPEED+'s')};
+calc();addEventListener('resize',calc);
+const hold=()=>box.classList.add('hold'),go=()=>box.classList.remove('hold');
+box.addEventListener('pointerdown',hold);['pointerup','pointercancel','pointerleave'].forEach(t=>box.addEventListener(t,go));
+box.addEventListener('contextmenu',e=>e.preventDefault());
 })();
 </script>
 </body>
