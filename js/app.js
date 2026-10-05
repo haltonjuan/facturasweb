@@ -143,7 +143,6 @@ $$('[data-i]').forEach(e=>e.textContent=T(e.dataset.i));
 $$('[data-ih]').forEach(e=>e.innerHTML=T(e.dataset.ih));
 R.style.setProperty('--ot',JSON.stringify(T('opt_open')));R.style.setProperty('--oc',JSON.stringify(T('opt_close')));
 $$('.lgb').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l==lang));
-$('.faq').hidden=lang!='es';
 $('#ct').textContent=T('ct'+tab);
 buildPanels(1);render();
 }
