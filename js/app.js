@@ -127,7 +127,8 @@ logo={u:cv.toDataURL(png?'image/png':'image/jpeg',.92),t:png?'PNG':'JPEG',w,h};r
 im.onerror=()=>{logo=null;render()};im.src=r.result};r.readAsDataURL(f)};
 $('#dl').onclick=()=>{
 render();
-try{if(!window.jspdf)throw 0;makePDF(model())}
+try{if(!window.jspdf)throw 0;makePDF(model());
+if(typeof gtag==='function'){gtag('event','descarga_pdf',{'event_category':'Interacción','event_label':'Factura Descargada Successfully','idioma_activo':lang||'es'})}}
 catch(e){console.error(e);alert(T('pdf_err'))}
 };
 const R=document.documentElement,tg=$('#tg'),th=l=>{R.dataset.theme=l;tg.textContent=l?'☾':'☀';try{localStorage.setItem('th',l)}catch(e){}};
