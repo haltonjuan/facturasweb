@@ -43,11 +43,11 @@ else{stroke(st==3?'#334155':C.ln);doc.setLineWidth(st==3?.9:.25);doc.line(MX,hb+
 /* --- Cliente y fechas --- */
 const lab=(t,x,yy,o)=>{font(7.5,1);ink(C.mut);tx(t,x,yy,o)};
 const yi=y;let yl=y;
-if(D.tab<2&&(D.cl||D.cid||D.cdir)){
+if(D.tab<2&&(D.cl||D.cid||D.ctel||D.cdir)){
 lab(T('cliente').toUpperCase(),MX,yl);yl+=4.6;
 if(D.cl){font(10.5,1);ink(C.ink);wrap(D.cl,100).forEach(s=>{tx(s,MX,yl);yl+=4.8})}
 font(9.5,0);ink('#334155');
-[D.cid,D.cdir&&D.ccl+': '+D.cdir].filter(Boolean).forEach(s=>wrap(s,100).forEach(w=>{tx(w,MX,yl);yl+=4.4}))}
+[D.cid,D.ctel&&T('tel_s')+': '+D.ctel,D.cdir&&T('addr')+': '+D.cdir].filter(Boolean).forEach(s=>wrap(s,100).forEach(w=>{tx(w,MX,yl);yl+=4.4}))}
 let yr=y;
 if(D.date){lab(T('date').toUpperCase(),PW-MX,yr,{align:'right'});yr+=4.6;font(10,0);ink(C.ink);tx(D.date,PW-MX,yr,{align:'right'});yr+=6}
 if(D.due){lab(T('due_date').toUpperCase(),PW-MX,yr,{align:'right'});yr+=4.6;font(10,0);ink(C.ink);wrap(D.due,70).forEach(s=>{tx(s,PW-MX,yr,{align:'right'});yr+=4.6});yr+=1.4}

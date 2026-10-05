@@ -14,7 +14,7 @@ const ta=(l,k,h,p='')=>`<label>${l}<textarea data-k="${k}" style="min-height:${h
 const buildPN=()=>{
 const DOC=(kt,kn,kx)=>`<div class="r"><label>${T('doc_type')}<select data-k="${kt}">${DT.map(o=>`<option value="${o[0]}">${T(o[1])}</option>`).join('')}</select><span class="dtc" data-dx="${kt}" hidden><input data-k="${kx}" data-own="${kt}" placeholder="${T('ph_doc_own')}" aria-label="${T('ph_doc_own')}" maxlength="30" autocomplete="off"><button type="button" class="b g dtl" data-back="${kt}" title="${T('back_list')}" aria-label="${T('back_list')}">✕</button></span></label>${fld(T('doc_num'),kn,'text',T('ph_doc_num'))}</div>`;
 const EM=`<fieldset><legend>${T('em_legend')}</legend>${fld(T('l_name_co'),'em','text','Mi Negocio S.A.S.')}${DOC('dt','nit','dtx')}<div class="r">${fld(T('l_tel'),'tel','tel')}${fld(T('mail'),'mail','email')}</div>${fld(T('addr'),'dir')}</fieldset>`;
-const CL=`<fieldset><legend>${T('cl_legend')}</legend>${fld(T('cl_name'),'cl')}${DOC('cdt','clnit','cdtx')}${fld(T('cl_ta'),'cldir')}</fieldset>`;
+const CL=`<fieldset><legend>${T('cl_legend')}</legend>${fld(T('cl_name'),'cl')}${DOC('cdt','clnit','cdtx')}${fld(T('client_phone'),'cltel','tel')}${fld(T('client_address'),'cldir')}</fieldset>`;
 const MT=`<div class="sep"><div class="r">${fld(T('date'),'date','date')}${fld(T('invoice_number'),'nro','text','0001')}</div><label>${T('cur_l')}<select data-k="cur">${CUC.map(c=>`<option value="${c}">${cuName(c)}</option>`).join('')}<option value="otra">${T('cur_other')}</option></select></label><label data-cx hidden>${T('cur_own')}<input data-k="curx" placeholder="${T('ph_cur')}"></label></div>`;
 return[
 EM+CL+MT+`<fieldset><legend>${T('items_legend')}</legend><div class="it ih"><span>${T('description')}</span><span>${T('quantity')}</span><span>${T('price')}</span><span></span></div><div id="rows"></div><button type="button" class="b g" id="ar">${T('add_row')}</button></fieldset>`+fld(T('tax_lbl'),'tax','number','19')+fld(T('disc_lbl'),'dsc','number',T('ph_disc'))+ta(T('notes_lbl'),'nt',64,T('ph_notes')),
@@ -51,7 +51,7 @@ const d=g('date');
 const D={tab,sty,m:n=>fm(n,cu,cx),cu,cx,title:T(TK[tab]),nro:g('nro'),
 em:g('em'),id:idl('dt','nit','dtx'),tel:g('tel'),mail:g('mail'),dir:g('dir'),
 date:d?new Date(d+'T12:00').toLocaleDateString(LOC[lang],{day:'numeric',month:'long',year:'numeric'}):'',
-cl:g('cl'),cid:tab<2?idl('cdt','clnit','cdtx'):'',ccl:tab<2?(/^[\d\s+()-]{7,}$/.test(g('cldir'))?T('tel_s'):T('addr')):'',cdir:tab<2?g('cldir'):'',
+cl:g('cl'),cid:tab<2?idl('cdt','clnit','cdtx'):'',ctel:tab<2?g('cltel'):'',cdir:tab<2?g('cldir'):'',
 qr:qrUrl(),tl:T(TLK[tab]),tot:0};
 if(tab==0){
 D.rows=$$('#rows .it').map(r=>{const[a,q,p]=[...r.querySelectorAll('input')].map(i=>i.value.trim());const Q=+q||0,P=+p||0;return{d:a,q:Q,p:P,a:rd(Q*P)}}).filter(r=>r.d||r.p);
@@ -77,7 +77,7 @@ const ini=initials(D.em);
 const mark=logo?`<img src="${logo.u}" alt="Logo">`:(ini?`<div class="av">${esc(ini)}</div>`:'');
 const who=`<div class="who">${mark}<div>${D.em?`<b style="font-size:17px">${esc(D.em)}</b>`:''}${D.id?`<div>${esc(D.id)}</div>`:''}${ln(T('tel_s'),D.tel)}${ln(T('mail'),D.mail)}${ln(T('addr'),D.dir)}</div></div>`;
 let h=`<div class="hd">${who}<div class="meta"><h3>${D.title}</h3><div class="mt">${T('invoice_number')} ${esc(D.nro)||'______'}</div></div></div>`;
-const c=(D.cl?`<div><b>${esc(D.cl)}</b></div>`:'')+(D.cid?`<div>${esc(D.cid)}</div>`:'')+ln(D.ccl,D.cdir);
+const c=(D.cl?`<div><b>${esc(D.cl)}</b></div>`:'')+(D.cid?`<div>${esc(D.cid)}</div>`:'')+ln(T('tel_s'),D.ctel)+ln(T('addr'),D.cdir);
 const cb=D.tab<2&&c?`<div class="bx"><small class="mt">${T('cliente').toUpperCase()}</small>${c}</div>`:'<div></div>';
 const dc=(D.date?`<div><small class="mt">${T('date').toUpperCase()}</small><div>${esc(D.date)}</div></div>`:'')+(D.due?`<div style="margin-top:6px"><small class="mt">${T('due_date').toUpperCase()}</small><div>${esc(D.due)}</div></div>`:'');
 if((D.tab<2&&c)||dc)h+=`<div class="rw">${cb}<div class="dc">${dc}</div></div>`;
