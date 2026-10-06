@@ -44,3 +44,6 @@ input:focus,textarea:focus,.cb:focus,.cs.open .cb{outline:0;border-color:var(--a
 .tph{display:grid;grid-template-columns:minmax(128px,40%) 1fr;gap:10px;margin-top:6px;align-items:start}
 .tph .cb,.tph input,.phs .dtc{margin-top:0}.phs{min-width:0}
 @media(max-width:380px){.tph{grid-template-columns:1fr}}
+
+/* FAQ ampliado: títulos y listas del contenido largo */
+.faq-body h3{font-size:1rem;margin:18px 0 6px}.faq-body ul{margin:8px 0 0;padding-left:20px;color:var(--mut)}.faq-body li{margin:6px 0}.faq-body p{margin:10px 0 0}
