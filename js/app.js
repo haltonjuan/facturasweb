@@ -9,12 +9,15 @@ const cuName=c=>{try{return new Intl.DisplayNames([lang],{type:'currency'}).of(c
 const fm=(n,c,x)=>{n=+n||0;if(c=='otra')return(x||'$')+' '+n.toLocaleString(LOC[lang],{maximumFractionDigits:2});const d=/COP|CLP/.test(c)?0:2;try{return n.toLocaleString(LOC[lang],{style:'currency',currency:c,minimumFractionDigits:d,maximumFractionDigits:d})}catch(e){return c+' '+n.toFixed(2)}};
 const DT=[['','dt_none'],['NIT/RUT','NIT / RUT'],['C.C.','dt_cc'],['C.E.','dt_ce'],['DNI','DNI'],['Pasaporte','dt_pas'],['Licencia de conducir','dt_lic'],['RFC','dt_rfc'],['CUIT','dt_cuit'],['RUC','dt_ruc'],['NIF','dt_nif'],['Tax ID','dt_tax'],['otro','dt_other']];
 const PM=[0,1,2,3,4,5,6];
+const CC=[['+1','US|CA'],['+34','ES'],['+33','FR'],['+52','MX'],['+54','AR'],['+55','BR'],['+56','CL'],['+57','CO'],['+58','VE'],['+51','PE'],['+593','EC'],['+591','BO'],['+595','PY'],['+598','UY'],['+506','CR'],['+507','PA'],['+502','GT'],['+503','SV'],['+504','HN'],['+505','NI'],['+53','CU'],['+351','PT'],['+44','GB'],['+49','DE'],['+39','IT'],['+32','BE'],['+41','CH'],['+212','MA'],['+221','SN'],['+225','CI']];
+const ccName=c=>{try{const n=new Intl.DisplayNames([lang],{type:'region'});return c[0]+' '+c[1].split('|').map(r=>n.of(r)).join(' / ')}catch(e){return c[0]}};
+const PHN=(l,k,kp,kx)=>`<label>${l}<div class="ph"><span class="phs"><select data-k="${kp}"><option value="">${T('cc_none')}</option>${CC.map(c=>`<option value="${c[0]}">${ccName(c)}</option>`).join('')}<option value="otro">${T('cc_other')}</option></select><span class="dtc" data-dx="${kp}" hidden><input data-k="${kx}" data-own="${kp}" placeholder="+" aria-label="${T('cc_other')}" maxlength="6" inputmode="tel" autocomplete="off"><button type="button" class="b g dtl" data-back="${kp}" title="${T('back_list')}" aria-label="${T('back_list')}">✕</button></span></span><input data-k="${k}" type="tel" autocomplete="tel-national"></div></label>`;
 const fld=(l,k,t='text',p='')=>`<label>${l}<input data-k="${k}" type="${t}" placeholder="${p}"${t=='number'?' min="0" step="any" inputmode="decimal"':''}></label>`;
 const ta=(l,k,h,p='')=>`<label>${l}<textarea data-k="${k}" style="min-height:${h}px" placeholder="${p}"></textarea></label>`;
 const buildPN=()=>{
 const DOC=(kt,kn,kx)=>`<div class="r"><label>${T('doc_type')}<select data-k="${kt}">${DT.map(o=>`<option value="${o[0]}">${T(o[1])}</option>`).join('')}</select><span class="dtc" data-dx="${kt}" hidden><input data-k="${kx}" data-own="${kt}" placeholder="${T('ph_doc_own')}" aria-label="${T('ph_doc_own')}" maxlength="30" autocomplete="off"><button type="button" class="b g dtl" data-back="${kt}" title="${T('back_list')}" aria-label="${T('back_list')}">✕</button></span></label>${fld(T('doc_num'),kn,'text',T('ph_doc_num'))}</div>`;
-const EM=`<fieldset><legend>${T('em_legend')}</legend>${fld(T('l_name_co'),'em','text','Mi Negocio S.A.S.')}${DOC('dt','nit','dtx')}<div class="r">${fld(T('l_tel'),'tel','tel')}${fld(T('mail'),'mail','email')}</div>${fld(T('addr'),'dir')}</fieldset>`;
-const CL=`<fieldset><legend>${T('cl_legend')}</legend>${fld(T('cl_name'),'cl')}${DOC('cdt','clnit','cdtx')}${fld(T('client_phone'),'cltel','tel')}${fld(T('client_address'),'cldir')}</fieldset>`;
+const EM=`<fieldset><legend>${T('em_legend')}</legend>${fld(T('l_name_co'),'em','text','Mi Negocio S.A.S.')}${DOC('dt','nit','dtx')}${PHN(T('l_tel'),'tel','tp','tpx')}${fld(T('mail'),'mail','email')}${fld(T('addr'),'dir')}</fieldset>`;
+const CL=`<fieldset><legend>${T('cl_legend')}</legend>${fld(T('cl_name'),'cl')}${DOC('cdt','clnit','cdtx')}${PHN(T('client_phone'),'cltel','ctp','ctpx')}${fld(T('client_address'),'cldir')}</fieldset>`;
 const MT=`<div class="sep"><div class="r">${fld(T('date'),'date','date')}${fld(T('invoice_number'),'nro','text','0001')}</div><label>${T('cur_l')}<select data-k="cur">${CUC.map(c=>`<option value="${c}">${cuName(c)}</option>`).join('')}<option value="otra">${T('cur_other')}</option></select></label><label data-cx hidden>${T('cur_own')}<input data-k="curx" placeholder="${T('ph_cur')}"></label></div>`;
 return[
 EM+CL+MT+`<fieldset><legend>${T('items_legend')}</legend><div class="it ih"><span>${T('description')}</span><span>${T('quantity')}</span><span>${T('price')}</span><span></span></div><div id="rows"></div><button type="button" class="b g" id="ar">${T('add_row')}</button></fieldset>`+fld(T('tax_lbl'),'tax','number','19')+fld(T('disc_lbl'),'dsc','number',T('ph_disc'))+ta(T('notes_lbl'),'nt',64,T('ph_notes')),
@@ -38,6 +41,7 @@ const g=k=>{const i=$(`#p${tab} [data-k="${k}"]`);return i?i.value.trim():''};
 
 /* ===== Modelo de datos: la vista previa y el PDF salen de aquí, así siempre coinciden ===== */
 const nv=v=>/^(no|no aplica|n\/a|na|s\/n|sin documento|ninguno|ninguna|-+)\.?$/i.test(v)?'':v;
+const phn=(k,kp,kx)=>{const n=g(k);if(!n)return'';let c=g(kp);if(c=='otro'){c=g(kx).replace(/[^\d+]/g,'');c=c?(c[0]=='+'?c:'+'+c):''}return c&&!/^\+/.test(n)?c+' '+n:n};
 const idl=(kt,kn,kx)=>{const n=nv(g(kn));if(!n)return'';const ty=g(kt);return(ty=='otro'?g(kx)||T('doc_word'):ty||T('doc_word'))+': '+n};
 const initials=s=>((s||'').match(/[\p{L}\p{N}]+/gu)||[]).slice(0,2).map(w=>w[0]).join('').toUpperCase();
 function qrUrl(){
@@ -49,9 +53,9 @@ const cu=g('cur')||'USD',cx=g('curx');
 const dec=/COP|CLP/.test(cu)?0:2,K=Math.pow(10,dec),rd=x=>Math.round(((+x||0)+Number.EPSILON)*K)/K;
 const d=g('date');
 const D={tab,sty,m:n=>fm(n,cu,cx),cu,cx,title:T(TK[tab]),nro:g('nro'),
-em:g('em'),id:idl('dt','nit','dtx'),tel:g('tel'),mail:g('mail'),dir:g('dir'),
+em:g('em'),id:idl('dt','nit','dtx'),tel:phn('tel','tp','tpx'),mail:g('mail'),dir:g('dir'),
 date:d?new Date(d+'T12:00').toLocaleDateString(LOC[lang],{day:'numeric',month:'long',year:'numeric'}):'',
-cl:g('cl'),cid:tab<2?idl('cdt','clnit','cdtx'):'',ctel:tab<2?g('cltel'):'',cdir:tab<2?g('cldir'):'',
+cl:g('cl'),cid:tab<2?idl('cdt','clnit','cdtx'):'',ctel:tab<2?phn('cltel','ctp','ctpx'):'',cdir:tab<2?g('cldir'):'',
 qr:qrUrl(),tl:T(TLK[tab]),tot:0};
 if(tab==0){
 D.rows=$$('#rows .it').map(r=>{const[a,q,p]=[...r.querySelectorAll('input')].map(i=>i.value.trim());const Q=+q||0,P=+p||0;return{d:a,q:Q,p:P,a:rd(Q*P)}}).filter(r=>r.d||r.p);
@@ -95,7 +99,7 @@ return h}
 function render(){
 const D=model();
 $$('[data-cx]').forEach(l=>l.hidden=D.cu!='otra');
-['dt','cdt'].forEach(k=>{const o=g(k)=='otro';$$('select[data-k="'+k+'"]').forEach(s=>s.hidden=o);$$('[data-dx="'+k+'"]').forEach(l=>l.hidden=!o)});
+['dt','cdt','tp','ctp'].forEach(k=>{const o=g(k)=='otro';$$('select[data-k="'+k+'"]').forEach(s=>s.hidden=o);$$('[data-dx="'+k+'"]').forEach(l=>l.hidden=!o)});
 $('#mini').className='doc mini t'+sty;$('#mini').innerHTML=htmlDoc(D);
 if(D.qr)$$('.qrc').forEach(q=>{try{new QRCode(q,{text:D.qr,width:92,height:92,correctLevel:QRCode.CorrectLevel.M})}catch(e){}});
 $('#lt').innerHTML='<span>'+D.tl+'</span><b>'+D.m(D.tot)+'</b>';
@@ -105,7 +109,7 @@ $('#lt').innerHTML='<span>'+D.tl+'</span><b>'+D.m(D.tot)+'</b>';
 
 /* ===== Documento "Otro": campo vacío para escribir; si lo dejan vacío vuelve a "Sin documento" ===== */
 const own=(k,v)=>{$$('select[data-k="'+k+'"]').forEach(s=>s.value=v);const kx=$('[data-own="'+k+'"]').dataset.k;$$('[data-k="'+kx+'"]').forEach(i=>i.value='')};
-document.addEventListener('change',e=>{const s=e.target;if(s.tagName=='SELECT'&&(s.dataset.k=='dt'||s.dataset.k=='cdt')&&s.value=='otro'){
+document.addEventListener('change',e=>{const s=e.target;if(s.tagName=='SELECT'&&(s.dataset.k=='dt'||s.dataset.k=='cdt'||s.dataset.k=='tp'||s.dataset.k=='ctp')&&s.value=='otro'){
 const kx=$('[data-own="'+s.dataset.k+'"]').dataset.k;$$('[data-k="'+kx+'"]').forEach(i=>i.value='');render();
 const i=$('#p'+tab+' [data-own="'+s.dataset.k+'"]');setTimeout(()=>i&&i.focus(),30)}});
 document.addEventListener('focusout',e=>{const i=e.target;if(i.dataset&&i.dataset.own&&!i.value.trim()){own(i.dataset.own,'');render()}});
@@ -136,16 +140,29 @@ try{th(localStorage.getItem('th')||'')}catch(e){}
 tg.onclick=()=>th(R.dataset.theme=='light'?'':'light');
 $$('[data-m]').forEach(b=>b.onclick=()=>$('#'+b.dataset.m).showModal());
 $$('dialog').forEach(d=>d.onclick=e=>{if(e.target==d||e.target.dataset.c!==undefined)d.close()});
+/* JSON-LD de las preguntas frecuentes (se regenera al cambiar de idioma) */
+function updateFaqSchema(){
+let ld=document.getElementById('faq-ld');
+if(!ld){ld=document.createElement('script');ld.type='application/ld+json';ld.id='faq-ld';document.head.append(ld)}
 const fq=$$('.faq details').map(d=>({'@type':'Question',name:d.querySelector('h2').textContent,acceptedAnswer:{'@type':'Answer',text:d.querySelector('p').textContent}}));
-const ld=document.createElement('script');ld.type='application/ld+json';ld.textContent=JSON.stringify({'@context':'https://schema.org','@type':'FAQPage',mainEntity:fq});document.head.append(ld);
+ld.textContent=JSON.stringify({'@context':'https://schema.org','@type':'FAQPage',mainEntity:fq})}
+/* Metadatos y atributos de accesibilidad traducibles */
+function applyMeta(){
+const set=(s,v)=>{const e=document.querySelector(s);if(e)e.setAttribute('content',v)};
+set('meta[name=description]',T('desc'));
+['og:title','twitter:title'].forEach(p=>set('meta[property="'+p+'"],meta[name="'+p+'"]',T('title')));
+['og:description','twitter:description'].forEach(p=>set('meta[property="'+p+'"],meta[name="'+p+'"]',T('desc')));
+tg.title=T('theme_t');
+$$('[data-ia]').forEach(e=>{const[a,k]=e.dataset.ia.split(':');e.setAttribute(a,T(k))})}
 function applyLang(){
 R.lang=lang;document.title=T('title');
 $$('[data-i]').forEach(e=>e.textContent=T(e.dataset.i));
 $$('[data-ih]').forEach(e=>e.innerHTML=T(e.dataset.ih));
+applyMeta();
 R.style.setProperty('--ot',JSON.stringify(T('opt_open')));R.style.setProperty('--oc',JSON.stringify(T('opt_close')));
 $$('.lgb').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l==lang));
 $('#ct').textContent=T('ct'+tab);
-buildPanels(1);render();
+buildPanels(1);render();updateFaqSchema();
 }
 document.addEventListener('click',e=>{const b=e.target.closest('.lgb');if(b){lang=b.dataset.l;try{localStorage.setItem('lang',lang)}catch(x){}applyLang()}});
 applyLang();

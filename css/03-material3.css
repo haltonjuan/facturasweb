@@ -1,0 +1,52 @@
+/* ===== CAPA UI Material 3 (solo diseño; mismos colores: #09090b / #111114 / #6b4bf5) ===== */
+:root{--fn:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--seg:#1e1e1e;--r:14px;--ring:0 0 0 3px rgba(107,75,245,.3);--sh:0 1px 2px rgba(0,0,0,.45),0 8px 24px rgba(0,0,0,.3)}
+[data-theme=light]{--seg:#e6e9f1;--sh:0 1px 2px rgba(15,23,42,.08),0 8px 24px rgba(15,23,42,.08)}
+body,button,input,select,textarea{font-family:var(--fn);font-weight:500}
+h1,h2,legend,.b,nav button,.opt-title{font-weight:700}
+.mi,.x::before,#ar::before,#dl::before{font-family:'Material Icons Round';font-weight:400;font-style:normal;line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;font-feature-settings:'liga';-webkit-font-smoothing:antialiased}
+/* Tarjetas: sombra suave + elevación al pasar */
+.card{border-radius:var(--r);box-shadow:var(--sh);transition:box-shadow .25s,border-color .25s}
+.card:hover{box-shadow:0 2px 4px rgba(0,0,0,.4),0 18px 44px rgba(107,75,245,.16)}
+/* Segmented control */
+nav{background:var(--seg);padding:4px;gap:4px;border:0;border-radius:var(--r)}
+nav button{border-radius:11px;padding:12px;transition:background .25s,color .25s,box-shadow .25s}
+nav button:hover{color:var(--tx)}
+nav button[aria-selected=true]{background:var(--btn);color:#fff;box-shadow:0 4px 14px rgba(107,75,245,.5)}
+/* Inputs: labels más claras, foco morado con halo */
+label{color:#bcc5d9;margin-bottom:14px}
+[data-theme=light] label{color:#475569}
+input,select,textarea{margin-top:6px;padding:12px 14px;border-radius:12px;transition:border-color .2s,box-shadow .2s}
+input:hover,select:hover,textarea:hover{border-color:rgba(107,75,245,.55)}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--btn);box-shadow:var(--ring)}
+.r{gap:12px}fieldset,.opt{border-radius:var(--r)}
+/* Selects con flecha Material que gira */
+.sel{position:relative;display:block}.ps .sel{display:inline-block}
+.sel select{appearance:none;-webkit-appearance:none;padding-right:44px;cursor:pointer}
+.sel .mi{position:absolute;right:12px;top:50%;margin-top:3px;translate:0 -50%;font-size:22px;color:var(--mut);pointer-events:none;transition:transform .28s,color .28s}
+.ps .sel .mi{margin-top:0}.sel:focus-within .mi{transform:rotate(180deg);color:var(--btn)}
+/* Logo / QR: caja clicable con drag-over */
+#lgl{position:relative;display:block}
+#lgl input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer;z-index:2}
+.dz{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:6px;padding:20px 14px;border:1.5px dashed rgba(107,75,245,.55);border-radius:var(--r);background:rgba(107,75,245,.07);color:var(--tx);font-weight:700;font-size:14px;text-align:center;transition:.2s}
+.dz .mi{font-size:24px;color:var(--btn)}
+#lgl:hover .dz,#lgl.over .dz{background:rgba(107,75,245,.16);border-color:var(--btn);box-shadow:var(--ring)}
+#lgl.over .dz{transform:scale(1.015)}
+/* Artículos */
+.it{grid-template-columns:1fr 72px 104px 40px;gap:10px;margin-bottom:10px;align-items:center}
+.it input{padding:11px 10px}.it.ih{margin-bottom:6px}
+.x{width:40px;height:40px;padding:0!important;display:inline-flex;align-items:center;justify-content:center;border-radius:50%!important;font-size:0;transition:.2s}
+.x::before{content:"close";font-size:20px}
+.x:hover{background:rgba(239,68,68,.16);border-color:rgba(239,68,68,.5);color:#f87171;transform:rotate(90deg)}
+#ar{display:inline-flex;align-items:center;gap:6px;margin-top:6px;padding:11px 16px;border-radius:12px}
+#ar::before{content:"add";font-size:20px}
+.b.g:hover{border-color:var(--btn);background:rgba(107,75,245,.1)}
+/* Botón principal: 56px, icono PDF y brillo */
+.b{border-radius:12px;box-shadow:0 2px 8px rgba(107,75,245,.3)}
+.b:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(107,75,245,.5)}.b:active{transform:none}
+#dl{position:relative;overflow:hidden;min-height:56px;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:16px;letter-spacing:.01em}
+#dl::before{content:"picture_as_pdf";font-size:24px}
+#dl::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .7s}
+#dl:hover::after{left:130%}
+.trust{margin:10px 0 0;text-align:center;font-size:12px;color:var(--mut)}
+@media(max-width:420px){.it{grid-template-columns:1fr 60px 84px 40px;gap:6px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
