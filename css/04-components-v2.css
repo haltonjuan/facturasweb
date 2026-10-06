@@ -41,6 +41,6 @@ input:focus,textarea:focus,.cb:focus,.cs.open .cb{outline:0;border-color:var(--a
 .opt[open] .opt-toggle::before{transform:rotate(180deg)}
 
 /* Teléfono: indicativo + número */
-.ph{display:grid;grid-template-columns:minmax(128px,40%) 1fr;gap:10px;margin-top:6px;align-items:start}
-.ph .cb,.ph input,.phs .dtc{margin-top:0}.phs{min-width:0}
-@media(max-width:380px){.ph{grid-template-columns:1fr}}
+.tph{display:grid;grid-template-columns:minmax(128px,40%) 1fr;gap:10px;margin-top:6px;align-items:start}
+.tph .cb,.tph input,.phs .dtc{margin-top:0}.phs{min-width:0}
+@media(max-width:380px){.tph{grid-template-columns:1fr}}
