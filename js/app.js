@@ -164,5 +164,5 @@ $$('.lgb').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l==lang));
 $('#ct').textContent=T('ct'+tab);
 buildPanels(1);render();updateFaqSchema();
 }
-document.addEventListener('click',e=>{const b=e.target.closest('.lgb');if(b){lang=b.dataset.l;try{localStorage.setItem('lang',lang)}catch(x){}applyLang()}});
+document.addEventListener('click',e=>{const b=e.target.closest('.lgb');if(b){const l=b.dataset.l;if(l===lang)return;const a=document.querySelector('link[rel="alternate"][hreflang="'+l+'"]');location.href=a?a.href:({es:'/',en:'/en/',fr:'/fr/'})[l]}});
 applyLang();
