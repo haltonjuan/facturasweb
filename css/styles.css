@@ -139,14 +139,14 @@ dialog::backdrop{background:rgba(0,0,0,.65)}
 dialog p{color:var(--mut)}
 dialog a{color:var(--btnh)}
 /* ===== Fotos de ejemplo: cinta continua de derecha a izquierda ===== */
-.cz{--w:clamp(150px,40vw,320px);--g:14px;width:min(calc(100% - 44px),780px);margin:22px auto 8px;padding:12px 0;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;}
+.cz{--w:clamp(180px,50vw,370px);--g:14px;width:min(calc(100% - 44px),780px);margin:22px auto 8px;padding:12px 0;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;}
 .cz-k{display:flex;justify-content:center;align-items:center}
 .cz-k.run{justify-content:flex-start;width:max-content;will-change:transform;animation:czm var(--d,12s) linear infinite}
 @keyframes czm{to{transform:translate3d(var(--p,-600px),0,0)}}
 .cz.hold .cz-k{animation-play-state:paused}
 .cz-i{flex:none;width:var(--w);margin:0 var(--g) 0 0}
 .cz-k:not(.run) .cz-i:last-child{margin-right:0}
-.cz-i img{display:block;width:100%;height:auto;pointer-events:none;-webkit-user-drag:none}
+.cz-i img{display:block;width:100%;height:auto;border-radius:18px;pointer-events:none;-webkit-user-drag:none}
 #lgs{position:absolute;top:12px;right:60px;z-index:9;display:flex;gap:4px;padding:4px;background:var(--card);border:1px solid var(--bd);border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.3)}
 #lgs button{border:0;border-radius:999px;padding:7px 9px;background:none;color:var(--tx);font:600 12px var(--fn);cursor:pointer;white-space:nowrap}
 #lgs button[aria-pressed=true]{background:var(--btn);color:#fff}

@@ -1,7 +1,7 @@
 /* Cinta de ejemplos (carrusel). Velocidad: constante SPEED. */
 (()=>{
 /* ===== EDITA AQUÍ: velocidad de la cinta en píxeles por segundo ===== */
-const SPEED=85;
+const SPEED=50;
 const box=document.getElementById('cz'),trk=document.getElementById('czk');
 if(!box||!trk)return;
 const base=[...trk.children];
