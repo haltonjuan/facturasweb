@@ -153,5 +153,6 @@ window.I18.fr={
   "m2_p1": "Le service est gratuit et fourni « tel quel ». Les documents générés sont informatifs et ne remplacent pas la facture électronique exigée par l'administration fiscale de votre pays. Vous êtes responsable de l'exactitude des données et du respect de vos obligations fiscales et légales.",
   "m2_p2": "Nous ne garantissons pas une disponibilité ininterrompue et déclinons toute responsabilité pour les pertes liées à l'utilisation du site. Nous pouvons modifier ces conditions à tout moment.",
   "m3_t": "Contact",
-  "m3_p": "Des questions, suggestions ou partenariats ? Écrivez-nous à <a href=\"mailto:haltondarkness@gmail.com\">haltondarkness@gmail.com</a>."
+  "m3_p": "Des questions, suggestions ou partenariats ? Écrivez-nous à <a href=\"mailto:haltondarkness@gmail.com\">haltondarkness@gmail.com</a>.",
+  "ph_name_co": "Mon Entreprise SARL"
 };

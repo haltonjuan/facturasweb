@@ -153,5 +153,6 @@ window.I18.es={
   "m2_p1": "El servicio es gratuito y se ofrece \"tal cual\". Los documentos generados son informativos y no reemplazan la factura electrónica ante la autoridad tributaria de tu país. Eres responsable de la veracidad de los datos y del cumplimiento de tus obligaciones fiscales y legales.",
   "m2_p2": "No garantizamos disponibilidad ininterrumpida ni asumimos responsabilidad por pérdidas derivadas del uso del sitio. Podemos modificar estos términos en cualquier momento.",
   "m3_t": "Contacto",
-  "m3_p": "¿Dudas, sugerencias o alianzas? Escríbenos a <a href=\"mailto:haltondarkness@gmail.com\">haltondarkness@gmail.com</a>."
+  "m3_p": "¿Dudas, sugerencias o alianzas? Escríbenos a <a href=\"mailto:haltondarkness@gmail.com\">haltondarkness@gmail.com</a>.",
+  "ph_name_co": "Mi Negocio S.A.S."
 };
