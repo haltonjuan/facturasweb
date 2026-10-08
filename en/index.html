@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Invoice Generator Online | Create Fee Statements and PDF Receipts</title>
+<meta name="description" content="Create and download sales invoices, fee statements for freelancers and cash receipts as PDFs, 100% free. Professional designs with a custom QR code, live preview and optimized for mobile.">
+<meta name="keywords" content="free invoice generator, create fee statement pdf, make cash receipt online, simple invoice template, free receipt generator for business">
+<meta name="theme-color" content="#060814">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon.png?v=1791423353">
+<link rel="canonical" href="https://facturasonline.lat/en/"><link rel="alternate" hreflang="es" href="https://facturasonline.lat/"><link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/"><link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/"><link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Facturas Online">
+<meta property="og:title" content="Free Invoice Generator Online | Create Fee Statements and PDF Receipts">
+<meta property="og:description" content="Create and download sales invoices, fee statements for freelancers and cash receipts as PDFs, 100% free. Professional designs with a custom QR code, live preview and optimized for mobile.">
+<meta property="og:url" content="https://facturasonline.lat/en/"><meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://facturasonline.lat/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Invoice Generator Online | Create Fee Statements and PDF Receipts">
+<meta name="twitter:description" content="Create and download sales invoices, fee statements for freelancers and cash receipts as PDFs, 100% free. Professional designs with a custom QR code, live preview and optimized for mobile.">
+<meta name="twitter:image" content="https://facturasonline.lat/img/og.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Invoice, Fee Statement and Receipt PDF Generator", "url": "https://facturasonline.lat/en/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "inLanguage": "en", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<link rel="stylesheet" href="/css/styles.css?v=1791423353">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GSDM0DSMY7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-GSDM0DSMY7");</script>
+</head>
+<body>
+<div id="lgs" role="group" aria-label="Language"><button type="button" class="lgb" data-l="en">🇺🇸 English</button><button type="button" class="lgb" data-l="fr">🇫🇷 Français</button><button type="button" class="lgb" data-l="es">🇨🇴 Español</button></div>
+<button id="tg" type="button" aria-label="Switch between dark and light mode" title="Light / dark mode">☀</button>
+<header>
+<h1 data-i="h1">Free Invoice, Fee Statement and Receipt Generator in PDF with Logo and QR</h1>
+<p class="sub" data-ih="sub">Create sales invoices, fee statements and cash receipts for shops and freelancers. Add your business logo with just a photo, plus a QR code. <span>Free, no sign-up: your data never leaves your device.</span></p>
+
+<section class="cz" id="cz" aria-label="Examples of documents created with the tool"><div class="cz-k" id="czk">
+<figure class="cz-i"><img src="/img/factura-1.webp?v=1791423353" width="760" height="1040" alt="Example of a professional sales receipt" decoding="async" draggable="false"></figure>
+<figure class="cz-i"><img src="/img/factura-2.webp?v=1791423353" width="760" height="1040" alt="Example of a professional fee statement" decoding="async" draggable="false"></figure>
+</div></section>
+</header>
+<main>
+<div class="ad"><!-- Espacio para Anuncio AdSense --></div>
+<nav role="tablist" aria-label="Document type">
+<button type="button" role="tab" data-i="tab0" aria-selected="true">Sales Invoice</button>
+<button type="button" role="tab" data-i="tab1" aria-selected="false">Fee Statement</button>
+<button type="button" role="tab" data-i="tab2" aria-selected="false">Cash Receipt</button>
+</nav>
+<div class="grid">
+<section class="card">
+<h2 class="st" id="ct">Crea tu recibo de venta</h2>
+<div id="pn"></div>
+<details class="opt"><summary><span class="opt-title" data-i="opt_title">Business logo / QR code</span><span class="opt-hint" data-i="opt_hint">(optional)</span><span class="opt-toggle"></span></summary>
+<label><span data-i="lg_lbl">Your business logo</span><input id="lg" type="file" accept="image/*"></label>
+<label><span data-i="qu_lbl">QR link (WhatsApp, Instagram or payment link)</span><input id="qu" placeholder="https://..."></label>
+<label><span data-i="qp_lbl">QR purpose</span><select id="qp"><option value="none" selected data-i="qp0">Not selected (hide QR)</option><option value="pay" data-i="qp1">Receive payment</option><option value="wa" data-i="qp2">Contact on WhatsApp</option><option value="ig" data-i="qp3">Follow on Instagram</option></select></label>
+</details>
+</section>
+<aside class="card" id="pv" aria-label="Document preview">
+<div class="ph"><h2 class="st" data-i="pv">Live preview</h2><label class="ps"><span data-i="tpl">Template</span><select id="sty"><option value="1" data-i="sty1">Minimalist</option><option value="2" data-i="sty2">Executive</option><option value="3" selected data-i="sty3">Modern</option></select></label></div>
+<div class="doc mini t1" id="mini"></div>
+<output class="num" id="lt"></output>
+<button type="button" class="b big" id="dl" data-i="dl">Download Invoice as PDF</button>
+</aside>
+</div>
+<div class="ad"><!-- Espacio para Anuncio AdSense --></div>
+<section class="faq">
+<details><summary><h2 data-i="faq1_q">How to fill out a legal fee statement for freelancers?</h2></summary>
+<p data-i="faq1_a">For your fee statement to be valid and professional, it should include five key elements: 1) the issuer's full details (your name or business, ID number, phone and address); 2) the details of the client or company you are billing; 3) a unique sequential number to keep your accounting under control; 4) a detailed description of the services provided (avoid vague wording and be specific); and 5) clear bank transfer details (bank, account type, account number and IBAN if international). With facturasonline.lat you can generate your fee statement as a PDF with selectable text, including all of these requirements, for free and in under a minute.</p></details>
+<details><summary><h2 data-i="faq2_q">What mandatory details must a cash receipt or informal proof of sale include?</h2></summary>
+<p data-i="faq2_a">A professional cash receipt must certify the actual receipt of money. The mandatory details to include are: the exact date of the transaction, the receipt or sequential number, the name of the person or business handing over the money, the detailed concept of the payment (e.g. "Full payment of Invoice No. 005") and, most importantly, the payment method used (cash, bank transfer, card, etc.). At the end of the document, a space for the signatures of the issuer and the recipient is essential to give it commercial validity.</p></details>
+<details><summary><h2 data-i="faq3_q">Digital invoicing tips and how to use a QR code to get paid faster.</h2></summary>
+<p data-i="faq3_a">Send your PDF as soon as the work is finished, use sequential numbering and keep a copy of each document. Add a QR code with your payment link, WhatsApp or Instagram: your client scans it with their phone and pays or messages you in seconds, with no need to copy any details. Set a clear payment deadline, offer several ways to pay and follow up on WhatsApp on the due date.</p></details>
+<details><summary><h2 data-i="faq4_q">Is it safe to generate my invoices and receipts on this website? Where is my data stored?</h2></summary>
+<p data-i="faq4_a">It is 100% safe. Unlike traditional platforms, facturasonline.lat is a "serverless" tool (no database server). This means that everything you type, the calculations and your business logo are processed solely and exclusively inside your own web browser (on your phone or computer). Your financial data never travels over the internet and is never stored on any external server, giving you absolute privacy and full protection against data leaks.</p></details>
+<details><summary><h2 data-i="faq5_q">How to download an invoice as a PDF with selectable text for free?</h2></summary>
+<p data-i="faq5_a">Most free generators turn your invoice into a heavy image inside a PDF, preventing your clients from copying your payment details. At facturasonline.lat we use native vector rendering. When you click "Download Invoice as PDF", the system exports a high-definition digital document where the text is 100% selectable. This way, your clients can copy your bank account number or the total due with a single tap from their phone, speeding up your payments.</p></details>
+</section>
+</main>
+<footer>
+<p style="margin-bottom:10px"><a href="/en/fee-statement" style="color:inherit">Fee statement</a> · <a href="/en/cash-receipt" style="color:inherit">Cash receipt</a> · <a href="/en/sales-receipt" style="color:inherit">Sales receipt</a> · <a href="/en/rent-receipt" style="color:inherit">Rent receipt</a> · <a href="/en/service-fee-statement" style="color:inherit">Fee statement for services</a> · <a href="/en/salary-payment-receipt" style="color:inherit">Salary payment receipt</a> · <a href="/en/advance-payment-receipt" style="color:inherit">Advance payment receipt</a> · <a href="/en/proof-of-payment" style="color:inherit">Proof of payment</a></p>
+<p data-i="copy">© 2026 Free Online Invoice Generator</p>
+<button type="button" onclick="location.href='/en/privacy'" data-i="f1">Privacy Policy</button><button type="button" onclick="location.href='/en/terms'" data-i="f2">Terms of Service</button><button type="button" onclick="location.href='/en/contact'" data-i="f3">Contact</button>
+</footer>
+<script>try{localStorage.setItem("lang","en")}catch(e){}</script><script src="/js/i18n.js?v=1791423353"></script>
+<script src="/js/pdf.js?v=1791423353"></script>
+<script src="/js/app.js?v=1791423353"></script>
+<script src="/js/carousel.js?v=1791423353"></script>
+</body>
+</html>

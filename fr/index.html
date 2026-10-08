@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Générateur de factures gratuit en ligne | Demandes de paiement et reçus PDF</title>
+<meta name="description" content="Créez et téléchargez gratuitement des factures de vente, des demandes de paiement pour freelances et des reçus de caisse en PDF. Designs professionnels avec code QR personnalisé, aperçu en direct et optimisé pour mobile.">
+<meta name="keywords" content="générateur de factures gratuit, créer une demande de paiement pdf, faire un reçu de caisse en ligne, modèle de facture simple, générateur de reçus gratuit">
+<meta name="theme-color" content="#060814">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon.png?v=1791423353">
+<link rel="canonical" href="https://facturasonline.lat/fr/"><link rel="alternate" hreflang="es" href="https://facturasonline.lat/"><link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/"><link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/"><link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Facturas Online">
+<meta property="og:title" content="Générateur de factures gratuit en ligne | Demandes de paiement et reçus PDF">
+<meta property="og:description" content="Créez et téléchargez gratuitement des factures de vente, des demandes de paiement pour freelances et des reçus de caisse en PDF. Designs professionnels avec code QR personnalisé, aperçu en direct et optimisé pour mobile.">
+<meta property="og:url" content="https://facturasonline.lat/fr/"><meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="https://facturasonline.lat/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Générateur de factures gratuit en ligne | Demandes de paiement et reçus PDF">
+<meta name="twitter:description" content="Créez et téléchargez gratuitement des factures de vente, des demandes de paiement pour freelances et des reçus de caisse en PDF. Designs professionnels avec code QR personnalisé, aperçu en direct et optimisé pour mobile.">
+<meta name="twitter:image" content="https://facturasonline.lat/img/og.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Générateur de factures, demandes de paiement et reçus en PDF", "url": "https://facturasonline.lat/fr/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "inLanguage": "fr", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<link rel="stylesheet" href="/css/styles.css?v=1791423353">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GSDM0DSMY7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-GSDM0DSMY7");</script>
+</head>
+<body>
+<div id="lgs" role="group" aria-label="Langue"><button type="button" class="lgb" data-l="en">🇺🇸 English</button><button type="button" class="lgb" data-l="fr">🇫🇷 Français</button><button type="button" class="lgb" data-l="es">🇨🇴 Español</button></div>
+<button id="tg" type="button" aria-label="Basculer entre le mode sombre et le mode clair" title="Mode clair / sombre">☀</button>
+<header>
+<h1 data-i="h1">Générateur gratuit de factures, demandes de paiement et reçus en PDF avec logo et QR</h1>
+<p class="sub" data-ih="sub">Créez des factures de vente, des demandes de paiement et des reçus de caisse pour commerces et freelances. Ajoutez le logo de votre entreprise avec une simple photo, avec un code QR. <span>Gratuit, sans inscription : vos données ne quittent jamais votre appareil.</span></p>
+
+<section class="cz" id="cz" aria-label="Exemples de documents créés avec l'outil"><div class="cz-k" id="czk">
+<figure class="cz-i"><img src="/img/factura-1.webp?v=1791423353" width="760" height="1040" alt="Exemple de reçu de vente professionnel" decoding="async" draggable="false"></figure>
+<figure class="cz-i"><img src="/img/factura-2.webp?v=1791423353" width="760" height="1040" alt="Exemple de demande de paiement professionnelle" decoding="async" draggable="false"></figure>
+</div></section>
+</header>
+<main>
+<div class="ad"><!-- Espacio para Anuncio AdSense --></div>
+<nav role="tablist" aria-label="Type de document">
+<button type="button" role="tab" data-i="tab0" aria-selected="true">Facture de vente</button>
+<button type="button" role="tab" data-i="tab1" aria-selected="false">Demande de paiement</button>
+<button type="button" role="tab" data-i="tab2" aria-selected="false">Reçu de caisse</button>
+</nav>
+<div class="grid">
+<section class="card">
+<h2 class="st" id="ct">Crea tu recibo de venta</h2>
+<div id="pn"></div>
+<details class="opt"><summary><span class="opt-title" data-i="opt_title">Logo de l'entreprise / Code QR</span><span class="opt-hint" data-i="opt_hint">(facultatif)</span><span class="opt-toggle"></span></summary>
+<label><span data-i="lg_lbl">Logo de votre entreprise</span><input id="lg" type="file" accept="image/*"></label>
+<label><span data-i="qu_lbl">Lien du QR (WhatsApp, Instagram ou lien de paiement)</span><input id="qu" placeholder="https://..."></label>
+<label><span data-i="qp_lbl">Objectif du QR</span><select id="qp"><option value="none" selected data-i="qp0">Non sélectionné (masquer le QR)</option><option value="pay" data-i="qp1">Recevoir un paiement</option><option value="wa" data-i="qp2">Contacter sur WhatsApp</option><option value="ig" data-i="qp3">Suivre sur Instagram</option></select></label>
+</details>
+</section>
+<aside class="card" id="pv" aria-label="Aperçu du document">
+<div class="ph"><h2 class="st" data-i="pv">Aperçu en direct</h2><label class="ps"><span data-i="tpl">Modèle</span><select id="sty"><option value="1" data-i="sty1">Minimaliste</option><option value="2" data-i="sty2">Exécutif</option><option value="3" selected data-i="sty3">Moderne</option></select></label></div>
+<div class="doc mini t1" id="mini"></div>
+<output class="num" id="lt"></output>
+<button type="button" class="b big" id="dl" data-i="dl">Télécharger la facture en PDF</button>
+</aside>
+</div>
+<div class="ad"><!-- Espacio para Anuncio AdSense --></div>
+<section class="faq">
+<details><summary><h2 data-i="faq1_q">Comment remplir une demande de paiement légale pour les freelances ?</h2></summary>
+<p data-i="faq1_a">Pour que votre demande de paiement soit valide et professionnelle, elle doit comporter cinq éléments clés : 1) les coordonnées complètes de l'émetteur (votre nom ou entreprise, numéro d'identification, téléphone et adresse) ; 2) les coordonnées du client ou de l'entreprise que vous facturez ; 3) un numéro séquentiel unique pour tenir votre comptabilité ; 4) la description détaillée des services rendus (évitez les termes vagues, soyez précis) ; et 5) des coordonnées bancaires claires (banque, type de compte, numéro et IBAN si le paiement est international). Avec facturasonline.lat, vous pouvez générer gratuitement votre demande de paiement en PDF à texte sélectionnable, avec toutes ces mentions, en moins d'une minute.</p></details>
+<details><summary><h2 data-i="faq2_q">Quelles mentions obligatoires doit contenir un reçu de caisse ou un justificatif de vente libre ?</h2></summary>
+<p data-i="faq2_a">Un reçu de caisse professionnel doit attester l'encaissement réel d'une somme d'argent. Les mentions obligatoires à inclure sont : la date exacte de la transaction, le numéro de reçu ou numéro séquentiel, le nom de la personne ou de l'entreprise qui remet l'argent, le motif détaillé du paiement (ex. « Paiement total de la facture N° 005 ») et, surtout, le moyen de paiement utilisé (espèces, virement, carte, etc.). En bas du document, un espace pour la signature de l'émetteur et du destinataire est indispensable pour lui conférer une valeur commerciale.</p></details>
+<details><summary><h2 data-i="faq3_q">Conseils de facturation numérique et utilisation du code QR pour accélérer vos paiements.</h2></summary>
+<p data-i="faq3_a">Envoyez votre document en PDF dès que le travail est terminé, utilisez une numérotation séquentielle et conservez une copie de chacun. Ajoutez un code QR avec votre lien de paiement, votre WhatsApp ou votre Instagram : le client le scanne avec son téléphone et paie ou vous écrit en quelques secondes, sans recopier de coordonnées. Définissez un délai de paiement clair, proposez plusieurs moyens de paiement et relancez par WhatsApp le jour de l'échéance.</p></details>
+<details><summary><h2 data-i="faq4_q">Est-il sûr de générer mes factures et reçus sur ce site ? Où sont stockées mes données ?</h2></summary>
+<p data-i="faq4_a">C'est 100 % sûr. Contrairement aux plateformes traditionnelles, facturasonline.lat est un outil « serverless » (sans serveur de base de données). Cela signifie que toutes les informations que vous saisissez, les calculs et le logo de votre entreprise sont traités uniquement dans votre propre navigateur (sur votre téléphone ou votre ordinateur). Vos données financières ne transitent jamais par internet et ne sont enregistrées sur aucun serveur externe, ce qui vous garantit une confidentialité absolue et une protection totale contre les fuites de données.</p></details>
+<details><summary><h2 data-i="faq5_q">Comment télécharger gratuitement une facture en PDF à texte sélectionnable ?</h2></summary>
+<p data-i="faq5_a">La plupart des générateurs gratuits transforment votre facture en une image lourde intégrée à un PDF, empêchant vos clients de copier vos coordonnées de paiement. Sur facturasonline.lat, nous utilisons un rendu vectoriel natif. Lorsque vous cliquez sur « Télécharger la facture en PDF », le système exporte un document numérique haute définition dont le texte est 100 % sélectionnable. Vos clients peuvent ainsi copier votre numéro de compte bancaire ou le total à payer d'un simple toucher depuis leur téléphone, ce qui accélère vos encaissements.</p></details>
+</section>
+</main>
+<footer>
+<p style="margin-bottom:10px"><a href="/fr/demande-de-paiement" style="color:inherit">Demande de paiement</a> · <a href="/fr/recu-de-caisse" style="color:inherit">Reçu de caisse</a> · <a href="/fr/recu-de-vente" style="color:inherit">Reçu de vente</a> · <a href="/fr/quittance-de-loyer" style="color:inherit">Quittance de loyer</a> · <a href="/fr/demande-de-paiement-prestation-de-services" style="color:inherit">Demande de paiement pour prestation de services</a> · <a href="/fr/recu-de-paiement-de-salaire" style="color:inherit">Reçu de paiement de salaire</a> · <a href="/fr/recu-d-acompte" style="color:inherit">Reçu d'acompte</a> · <a href="/fr/justificatif-de-paiement" style="color:inherit">Justificatif de paiement</a></p>
+<p data-i="copy">© 2026 Générateur de factures gratuit en ligne</p>
+<button type="button" onclick="location.href='/fr/confidentialite'" data-i="f1">Politique de confidentialité</button><button type="button" onclick="location.href='/fr/conditions-utilisation'" data-i="f2">Conditions d'utilisation</button><button type="button" onclick="location.href='/fr/contact'" data-i="f3">Contact</button>
+</footer>
+<script>try{localStorage.setItem("lang","fr")}catch(e){}</script><script src="/js/i18n.js?v=1791423353"></script>
+<script src="/js/pdf.js?v=1791423353"></script>
+<script src="/js/app.js?v=1791423353"></script>
+<script src="/js/carousel.js?v=1791423353"></script>
+</body>
+</html>

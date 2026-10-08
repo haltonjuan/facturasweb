@@ -1,81 +1,393 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://facturasonline.lat/</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/en/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/fr/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/"/>
   </url>
   <url>
     <loc>https://facturasonline.lat/cuenta-de-cobro</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/cuenta-de-cobro"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/fee-statement"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/demande-de-paiement"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/cuenta-de-cobro"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/en/fee-statement</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/cuenta-de-cobro"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/fee-statement"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/demande-de-paiement"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/cuenta-de-cobro"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/fr/demande-de-paiement</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/cuenta-de-cobro"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/fee-statement"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/demande-de-paiement"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/cuenta-de-cobro"/>
   </url>
   <url>
     <loc>https://facturasonline.lat/recibo-de-caja</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/recibo-de-caja"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/cash-receipt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/recu-de-caisse"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/recibo-de-caja"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/en/cash-receipt</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/recibo-de-caja"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/cash-receipt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/recu-de-caisse"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/recibo-de-caja"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/fr/recu-de-caisse</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/recibo-de-caja"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/cash-receipt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/recu-de-caisse"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/recibo-de-caja"/>
   </url>
   <url>
     <loc>https://facturasonline.lat/recibo-de-venta</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/recibo-de-venta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/sales-receipt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/recu-de-vente"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/recibo-de-venta"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/en/sales-receipt</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/recibo-de-venta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/sales-receipt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/recu-de-vente"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/recibo-de-venta"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/fr/recu-de-vente</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/recibo-de-venta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/sales-receipt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/recu-de-vente"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/recibo-de-venta"/>
   </url>
   <url>
     <loc>https://facturasonline.lat/recibo-de-arriendo</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/recibo-de-arriendo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/rent-receipt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/quittance-de-loyer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/recibo-de-arriendo"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/en/rent-receipt</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/recibo-de-arriendo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/rent-receipt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/quittance-de-loyer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/recibo-de-arriendo"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/fr/quittance-de-loyer</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/recibo-de-arriendo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/rent-receipt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/quittance-de-loyer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/recibo-de-arriendo"/>
   </url>
   <url>
     <loc>https://facturasonline.lat/cuenta-de-cobro-prestacion-de-servicios</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/cuenta-de-cobro-prestacion-de-servicios"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/service-fee-statement"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/demande-de-paiement-prestation-de-services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/cuenta-de-cobro-prestacion-de-servicios"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/en/service-fee-statement</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/cuenta-de-cobro-prestacion-de-servicios"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/service-fee-statement"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/demande-de-paiement-prestation-de-services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/cuenta-de-cobro-prestacion-de-servicios"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/fr/demande-de-paiement-prestation-de-services</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/cuenta-de-cobro-prestacion-de-servicios"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/service-fee-statement"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/demande-de-paiement-prestation-de-services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/cuenta-de-cobro-prestacion-de-servicios"/>
   </url>
   <url>
     <loc>https://facturasonline.lat/recibo-de-pago-de-nomina</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/recibo-de-pago-de-nomina"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/salary-payment-receipt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/recu-de-paiement-de-salaire"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/recibo-de-pago-de-nomina"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/en/salary-payment-receipt</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/recibo-de-pago-de-nomina"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/salary-payment-receipt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/recu-de-paiement-de-salaire"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/recibo-de-pago-de-nomina"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/fr/recu-de-paiement-de-salaire</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/recibo-de-pago-de-nomina"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/salary-payment-receipt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/recu-de-paiement-de-salaire"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/recibo-de-pago-de-nomina"/>
   </url>
   <url>
     <loc>https://facturasonline.lat/recibo-de-anticipo</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/recibo-de-anticipo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/advance-payment-receipt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/recu-d-acompte"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/recibo-de-anticipo"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/en/advance-payment-receipt</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/recibo-de-anticipo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/advance-payment-receipt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/recu-d-acompte"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/recibo-de-anticipo"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/fr/recu-d-acompte</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/recibo-de-anticipo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/advance-payment-receipt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/recu-d-acompte"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/recibo-de-anticipo"/>
   </url>
   <url>
     <loc>https://facturasonline.lat/comprobante-de-pago</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/comprobante-de-pago"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/proof-of-payment"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/justificatif-de-paiement"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/comprobante-de-pago"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/en/proof-of-payment</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/comprobante-de-pago"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/proof-of-payment"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/justificatif-de-paiement"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/comprobante-de-pago"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/fr/justificatif-de-paiement</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/comprobante-de-pago"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/proof-of-payment"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/justificatif-de-paiement"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/comprobante-de-pago"/>
   </url>
   <url>
     <loc>https://facturasonline.lat/sobre-nosotros</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/sobre-nosotros"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/a-propos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/sobre-nosotros"/>
   </url>
   <url>
-    <loc>https://facturasonline.lat/contacto</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://facturasonline.lat/en/about</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/sobre-nosotros"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/a-propos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/sobre-nosotros"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/fr/a-propos</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/sobre-nosotros"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/a-propos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/sobre-nosotros"/>
   </url>
   <url>
     <loc>https://facturasonline.lat/privacidad</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/privacidad"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/privacidad"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/en/privacy</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/privacidad"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/privacidad"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/fr/confidentialite</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/privacidad"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/confidentialite"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/privacidad"/>
   </url>
   <url>
     <loc>https://facturasonline.lat/terminos</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/terminos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/conditions-utilisation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/terminos"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/en/terms</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/terminos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/conditions-utilisation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/terminos"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/fr/conditions-utilisation</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/terminos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/conditions-utilisation"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/terminos"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/contacto</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/contacto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/contacto"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/en/contact</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/contacto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/contacto"/>
+  </url>
+  <url>
+    <loc>https://facturasonline.lat/fr/contact</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://facturasonline.lat/contacto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://facturasonline.lat/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://facturasonline.lat/fr/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://facturasonline.lat/contacto"/>
   </url>
 </urlset>
