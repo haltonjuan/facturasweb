@@ -154,5 +154,6 @@ window.I18.fr={
   "m2_p2": "Nous ne garantissons pas une disponibilité ininterrompue et déclinons toute responsabilité pour les pertes liées à l'utilisation du site. Nous pouvons modifier ces conditions à tout moment.",
   "m3_t": "Contact",
   "m3_p": "Des questions, suggestions ou partenariats ? Écrivez-nous à <a href=\"mailto:haltondarkness@gmail.com\">haltondarkness@gmail.com</a>.",
-  "ph_name_co": "Mon Entreprise SARL"
+  "ph_name_co": "Mon Entreprise SARL",
+  "statement_number": "Demande N°"
 };

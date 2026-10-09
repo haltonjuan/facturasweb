@@ -154,5 +154,6 @@ window.I18.es={
   "m2_p2": "No garantizamos disponibilidad ininterrumpida ni asumimos responsabilidad por pérdidas derivadas del uso del sitio. Podemos modificar estos términos en cualquier momento.",
   "m3_t": "Contacto",
   "m3_p": "¿Dudas, sugerencias o alianzas? Escríbenos a <a href=\"mailto:haltondarkness@gmail.com\">haltondarkness@gmail.com</a>.",
-  "ph_name_co": "Mi Negocio S.A.S."
+  "ph_name_co": "Mi Negocio S.A.S.",
+  "statement_number": "N.º de consecutivo"
 };

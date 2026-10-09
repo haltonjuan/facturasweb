@@ -36,7 +36,7 @@ else if(ini){fill(st==2?'#4f4aa8':'#e2e8f0');doc.circle(MX+7.5,top+7.5,7.5,'F');
 let ty=top+4.2;
 tl.forEach(l=>{font(l[1],l[2]);ink(l[2]?hc:(st==2?'#e0e7ff':'#475569'));tx(l[0],lx,ty);ty+=l[3]});
 font(15,1);ink(hc);tx(D.title,PW-MX,top+5,{align:'right'});
-font(10,0);ink(hs);tx(T('invoice_number')+' '+(D.nro||'______'),PW-MX,top+11,{align:'right'})
+font(10,0);ink(hs);tx(T(D.tab==1?'statement_number':'invoice_number')+' '+(D.nro||'______'),PW-MX,top+11,{align:'right'})
 const hb=top+hh;
 if(st==2){y=hb+8+9}
 else{stroke(st==3?'#334155':C.ln);doc.setLineWidth(st==3?.9:.25);doc.line(MX,hb+4.5,PW-MX,hb+4.5);y=hb+13}

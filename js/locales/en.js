@@ -154,5 +154,6 @@ window.I18.en={
   "m2_p2": "We do not guarantee uninterrupted availability or accept liability for losses arising from use of the site. We may change these terms at any time.",
   "m3_t": "Contact",
   "m3_p": "Questions, suggestions or partnerships? Write to us at <a href=\"mailto:haltondarkness@gmail.com\">haltondarkness@gmail.com</a>.",
-  "ph_name_co": "My Business LLC"
+  "ph_name_co": "My Business LLC",
+  "statement_number": "Statement No."
 };
